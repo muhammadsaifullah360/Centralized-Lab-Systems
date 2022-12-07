@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -28,8 +27,7 @@ class LoginController extends Controller
      */
 
 
-    protected $redirectTo = '/admin/dashboard';
-
+    protected $redirectTo = '/home';
 
 
     /**
@@ -40,5 +38,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function redirectTo()
+    {
+        if (str(auth()->user()->role)->exactly('admin')) {
+            return route('admin.dashboard');
+        } elseif (str(auth()->user()->role)->exactly('operator')) {
+            return route('operator.dashboard');
+        }
+        return '/home';
     }
 }

@@ -1,4 +1,4 @@
-<x-layouts.dashboard_layout>
+<x-admin.layout.dashboard>
     <x-slot:title>Admin | Laboratories</x-slot:title>
 
 
@@ -12,7 +12,7 @@
                             <i class="far fa-plus-square"></i> Add Lab
                         </button>
                         <!-- Modal -->
-                        <form action="{{ route('laboratories.store') }}" method="POST">
+                        <form action="{{ route('admin.lab.store') }}" method="POST">
                             @csrf
                             <div class="modal fade" data-mdb-backdrop="static" data-mdb-keyboard="false"
                                  id="exampleModal"
@@ -22,8 +22,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <div class="text-center"><h5 class="modal-title" id="exampleModalLabel">Add
-                                                    Lab
-                                                    Details</h5></div>
+                                                    Lab Details</h5></div>
                                             <button type="button" class="btn-close" data-mdb-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>
@@ -63,9 +62,10 @@
                                                         </div>
                                                         <div class="col">
                                                             <select id="inputState" class="form-select mb-3"
-                                                                    name="admins_id">
-                                                                @foreach($store_users as $id=>$name)
-                                                                    <option value="{{$id}}">{{$name}}</option>
+                                                                    name="user_id">
+                                                                @foreach($users as $user)
+                                                                    <option
+                                                                        value="{{ $user->id }}"> {{ $user->name }} </option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="form-outline">
@@ -97,7 +97,7 @@
                     </div>
                 @endif
                 {{--        tabel start from here--}}
-                    <table class="table align-middle mb-4 bg-white shadow-3-strong">
+                <table class="table align-middle mb-4 bg-white shadow-3-strong">
                     <thead class="table-dark">
                     <tr>
                         <th>Lab Name</th>
@@ -108,54 +108,47 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($laboratories->count())
-                        @foreach($laboratories as $index=> $laboratory)
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img
-                                            src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-                                            class="rounded-circle"
-                                            alt=""
-                                            style="width: 45px; height: 45px"
-                                        />
-                                        <div class="ms-3">
-                                            <p class="fw-bold mb-1">{{ $laboratory->name }}</p>
+                    @foreach($labs as $lab)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img
+                                        src="{{asset('images/img.png')}}"
+                                        class="rounded-circle"
+                                        alt=""
+                                        style="width: 45px; height: 45px"
+                                    />
+                                    <div class="ms-3">
+                                        <p class="fw-bold mb-1">{{ $lab->name }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{ $lab->license_number }}</p>
+
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{ $lab->contact}}</p>
+                            </td>
+                            <td>
+                                <p class="badge badge-primary rounded-pill d-inline">{{ $lab->user->name }}</p>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn-delete" href="{{ route('delete.lab',$lab->id) }}">
+                                        <div class="fa-2x" style="color: #e60000">
+                                            <i class="fa-solid fa-trash-can"></i>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">{{ $laboratory->license_number }}</p>
-
-                                </td>
-                                <td>
-                                    <p class="fw-normal mb-1">{{ $laboratory->contact}}</p>
-                                </td>
-                                @foreach($store_users as $id=>$name)
-                                    @if($laboratory->admins_id == $id)
-                                        <td>
-                                            <p class="badge badge-primary rounded-pill d-inline">{{ $name }}</p>
-                                        </td>
-                                    @endif
-                                @endforeach
-                                <td>
-                                    <div class="d-flex justify-content-between">
-                                        <a class="btn-delete" href="{{ route('delete.lab',$laboratory->id) }}">
-                                            <div class="fa-2x" style="color: #e60000">
-                                                <i class="fa-solid fa-trash-can"></i>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="fa-2x" style="color: #0040ff">
-                                                <i class="fa-solid fa-user-pen"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-
+                                    </a>
+                                    <a href="{{ route('edit.labs',$lab->id) }}">
+                                        <div class="fa-2x" style="color: #0040ff">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <form id="form-delete" method="POST" style="display: none">
@@ -166,4 +159,4 @@
         </div>
     </main>
 
-</x-layouts.dashboard_layout>
+</x-admin.layout.dashboard>

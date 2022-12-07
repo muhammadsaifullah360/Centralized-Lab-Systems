@@ -1,8 +1,7 @@
-<x-layouts.dashboard_layout>
+<x-admin.layout.dashboard>
     <x-slot:title>Admin | Main Dashboard</x-slot:title>
     <main style="margin-top: 58px">
         <div class="container pt-4">
-            <!--Section: Minimal statistics cards-->
             <section>
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 col-12 mb-4">
@@ -10,7 +9,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <h3 class="text-success">0{{ $total_labs }}</h3>
+                                        <h3 class="text-success">0{{ $totalLabs }}</h3>
                                         <p class="mb-0">Total Labs</p>
                                     </div>
                                     <div class="align-self-center">
@@ -50,11 +49,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between px-md-1">
+                                    <div class="align-self-center">
+                                        <i class="fas fa-person-booth text-danger fa-3x"></i>
+                                    </div>
+                                    <div class="text-end">
+                                        <h3>08</h3>
+                                        <p class="mb-0">Total Lab Admins</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
-            <!--Section: Minimal statistics cards-->
 
-            <!--Section: Statistics with subtitles-->
             <section>
 
                 <div class="row">
@@ -100,8 +112,8 @@
                     </div>
                 </div>
             </section>
-            <!--Section: Statistics with subtitles-->
+
         </div>
     </main>
 
-</x-layouts.dashboard_layout>
+</x-admin.layout.dashboard>

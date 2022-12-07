@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Lab extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'license_number',
         'contact',
         'address',
-        'admins_id'
+        'user_id'
     ];
 
-    public function lab(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

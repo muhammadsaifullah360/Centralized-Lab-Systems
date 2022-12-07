@@ -26,16 +26,14 @@
                 <ul class="navbar-nav navbar-nav ml-auto">
 
                     <li class="nav-item ">
-                        <a class="nav-link hover-shadow" style="color: #ff7200" href="#">Login</a>
+                        <a class="nav-link hover-shadow" style="color: #ff7200" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light hover-shadow" href="#">SignUp</a>
+                        <a class="nav-link text-light hover-shadow" href="{{ route('register') }}">Signup</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light hover-shadow" href="#">About Us</a>
+                        <a class="nav-link text-light hover-shadow" href="#">About us</a>
                     </li>
-
-
                 </ul>
             </div>
         </div>

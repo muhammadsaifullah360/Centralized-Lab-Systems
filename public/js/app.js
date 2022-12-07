@@ -10,3 +10,12 @@ document.querySelectorAll('.btn-delete').forEach((button) => {
         }
     })
 })
+
+let filterName = document.getElementById('filter-name')
+if(filterName){
+    filterName.addEventListener('change', function () {
+    let name = this.value || this.options[this.selectedIndex].value
+    window.location.href = window.location.href.split('?')[0] + '?name=' + name
+
+})}
+

@@ -2,34 +2,38 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LabController;
+use App\Http\Controllers\OperatorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'home');
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::middleware('auth')->controller(AdminController::class)->prefix('admin')->group(function () {
-    Route::get('dashboard', 'adminDashboard')->name('admin.dashboard');
-    Route::get('dashboard', 'main_dashboard')->name('dashboard.show');
+Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->prefix('admin')->group(function () {
+    Route::get('dashboard', 'index')->name('admin.dashboard');
 
-    Route::get('laboratories', 'laboratories')->name('laboratories.show');
-    Route::post('laboratories', 'laboratories_store')->name('laboratories.store');
-    Route::delete('laboratories/{id}', 'delete_labs')->name('delete.lab');
+    Route::get('labs', [LabController::class, 'index'])->name('admin.lab.index');
+    Route::post('lab', 'storeLab')->name('admin.lab.store');
+    Route::delete('labs/{id}', 'deleteLab')->name('delete.lab');
+    Route::get('lab/{id}/edit', 'editLab')->name('edit.labs');
+    Route::put('lab/edit/{id}', 'updateLab')->name('update.labs');
 
-    Route::get('operations/{id}/edit_users', 'edit_users')->name('edit.users');
-    Route::put('operations/{id}', 'update_users')->name('update.users');
+    Route::get('lab/users', 'users')->name('admin.lab.user.index');
+    Route::get('user/{id}/edit', 'editUser')->name('edit.users');
+    Route::put('user/edit/{id}', 'updateUser')->name('update.users');
+    Route::delete('users/{id}', 'deleteUser')->name('delete.users');
+    Route::post('lab/users', 'storeUser')->name('user.store');
+});
 
-    Route::delete('users/{id}', 'delete_users')->name('delete.users');
-    Route::get('users', 'users')->name('users.show');
-    Route::post('users', 'store_users')->name('store.users');
+Route::middleware(['auth', 'role:operator'])->controller(OperatorController::class)->prefix('operator')->group(function () {
+    Route::get('dashboard', 'index')->name('operator.dashboard');
 });
 
 Route::any('dd', function (Request $request) {

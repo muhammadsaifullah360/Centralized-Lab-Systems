@@ -1,4 +1,10 @@
-<x-layouts.dashboard_layout>
+<x-admin.layout.dashboard>
+    <x-slot:title>Edit | Users</x-slot:title>
+    @if($message = session('message'))
+        <div class="note note-success mb-4">
+            {{ $message }}
+        </div>
+    @endif
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center h-100">
@@ -11,9 +17,8 @@
                                 @method('PUT')
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
-
                                         <div class="form-outline mb-4">
-                                            <input type="text" name="name" value="{{ $store_users->name }}"
+                                            <input typ  e="text" name="name" value="{{ $users->name }}"
                                                    class="form-control"
                                                    id="name" required/>
                                             <label for="name" class="form-label">Name</label>
@@ -21,7 +26,7 @@
                                         </div>
                                         <!-- input -->
                                         <div class="form-outline mb-4">
-                                            <input type="email" id="email" value="{{ $store_users->email }}"
+                                            <input type="email" id="email" value="{{ $users->email }}"
                                                    name="email"
                                                    class="form-control"/>
                                             <label class="form-label" for="email">Email
@@ -29,7 +34,7 @@
                                         </div>
                                         <!-- input -->
                                         <div class="form-outline ">
-                                            <input type="text" id="role" value="{{ $store_users->role }}"
+                                            <input type="text" id="role" value="{{ $users->role }}"
                                                    name="role"
                                                    class="form-control"/>
                                             <label class="form-label" for="email">Role
@@ -39,15 +44,15 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline mb-4">
-                                            <input  value="{{ $store_users->password }}"
-                                                    name="password" id="password"
-                                                    class="form-control"/>
+                                            <input value="{{ $users->password }}"
+                                                   name="password" id="password"
+                                                   class="form-control"/>
                                             <label class="form-label"
                                                    for="password">Password</label>
                                         </div>
 
                                         <div class="form-outline mb-4">
-                                            <input type="Text" id="phone" value="{{ $store_users->phone }}"
+                                            <input type="Text" id="phone" value="{{ $users->phone }}"
                                                    name="phone"
                                                    class="form-control"/>
                                             <label class="form-label" for="phone">Phone
@@ -55,9 +60,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn btn-secondary" href="{{ route('users.show') }}"> Cancel</a>
+                                <a class="btn btn-secondary" href="{{ route('admin.lab.user.index') }}"> Cancel</a>
                                 <button type="submit" class="btn btn-primary"
-                                        formaction="{{ route('update.users', $store_users->id) }}"
+                                        formaction="{{ route('update.users', $users->id) }}"
                                         style="margin-left: 3px">
                                     Save
                                 </button>
@@ -68,4 +73,6 @@
             </div>
         </div>
     </section>
-</x-layouts.dashboard_layout>
+</x-admin.layout.dashboard>
+
+

@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('labs', function (Blueprint $table) {
@@ -20,7 +15,7 @@ return new class extends Migration
             $table->string('contact')->nullable();
             $table->string('address');
             $table->timestamps();
-            $table->foreignId('admins_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
