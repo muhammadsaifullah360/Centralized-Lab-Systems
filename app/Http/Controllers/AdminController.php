@@ -22,6 +22,7 @@ class AdminController extends Controller
 
     public function users()
     {
+
         $users = User::where('role', 'operator')->orderBy('name')->paginate(4);
         return view('admin.lab.user.index', compact('users'));
     }

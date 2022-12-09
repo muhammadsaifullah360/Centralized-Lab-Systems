@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="csrf_token" content="{{ csrf_token() }}">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-    <title>{{ $title ?? 'Admin Dashboard' }}</title>
+    <title>{{ $title ?? 'Lab Admin Dashboard' }}</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
@@ -24,41 +26,45 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <a href="{{ route('admin.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple"
+
+                <a href="{{ route('operator.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple"
                    aria-current="true">
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                 </a>
-                <a href="{{ route('admin.lab.user.index') }}" class="list-group-item list-group-item-action py-2 ripple"><i
-                    class="fas fa-users fa-fw me-3"></i><span>Labs Users</span></a>
-                <a href="{{ route('admin.lab.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
-                    <i class="fas fa-chart-area fa-fw me-3"></i><span>Laboratories</span>
+
+                <a href="{{ route('appointment.dashboard') }}"
+                   class="list-group-item list-group-item-action py-2 ripple"><i
+                        class="fas fa-users fa-fw me-3"></i><span>Appointment List</span></a>
+
+                <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa-solid fa-user-plus me-3"></i><span>Registered Users</span>
+                </a>
+
+                <a href="{{ route('tests.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fas fa-list fa-fw me-3"></i><span>Test List</span>
+                </a>
+
+                <a href="{{ route('about.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fas fa-book-reader fa-fw me-3"></i><span>Reports</span>
                 </a>
             </div>
         </div>
     </nav>
-    <!-- Sidebar -->
 
-    <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <!-- Container wrapper -->
+
         <div class="container-fluid">
-            <!-- Toggle button -->
+
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
                     aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- Brand -->
             <a class="navbar-brand" href="#">
                 <div class="">
-                    <h5 style="color: #146EBE" ><i class="fa-solid fa-user" ></i> Admin</h5>
+                    <h5 style="color: #146EBE"><i class="fa-solid fa-user"></i> Lab Admin</h5>
                 </div>
             </a>
-            <!-- Search form -->
-            <form class="d-none d-md-flex input-group w-auto my-auto">
-
-            </form>
-
             <!-- Right links -->
             <ul class="navbar-nav ms-auto d-flex flex-row">
                 <ul class="navbar-nav navbar-nav ml-auto">
@@ -96,32 +102,13 @@
                         </li>
                     @endguest
                 </ul>
-                <!-- Avatar -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-                       id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
-                             height="22"
-                             alt="" loading="lazy"/>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">My profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </li>
             </ul>
         </div>
-        <!-- Container wrapper -->
-    </nav>
-    <!-- Navbar -->
-</header>
-<!--Main Navigation-->
 
-<!--Main layout-->
+    </nav>
+</header>
+
 {{ $slot }}
-<!--Main layout-->
-<!-- MDB -->
 <script src="{{ asset('js/mdb.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

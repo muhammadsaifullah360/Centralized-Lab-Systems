@@ -11,7 +11,7 @@ class LabController extends Controller
 
     public function index()
     {
-        $users = User::orderBy('name')->get();
+        $users = User::whereDoesntHave('lab')->get();
         $labs = Lab::with('user')->get();
         return view('admin.lab.index', compact('labs', 'users'));
     }
