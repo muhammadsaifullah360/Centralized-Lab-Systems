@@ -1,7 +1,5 @@
 <x-admin.layout.dashboard>
     <x-slot:title>Admin | Laboratories</x-slot:title>
-
-
     <main style="margin-top: 58px">
         <div class="container pt-4">
             <section>

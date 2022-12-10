@@ -80,7 +80,7 @@
             @endif
 
 
-            <table class="table align-middle mb-4 bg-white shadow-3-strong">
+            <table class="table align-middle mb-4 bg-white table-striped table-active  shadow-3-strong">
                 <thead class="table-dark">
                 <tr>
                     <th width="5%">#</th>
@@ -92,50 +92,51 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($tests as $index => $test)
-                    <tr>
+                @if(!is_null($tests))
+                    @foreach($tests as $index => $test)
+                        <tr>
 
-                        <td>{{ $index++ }}</td>
-                        <td>
-                            {{ $test->created_at }}
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">{{ $test->name }}</p>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">{{ $test->price }}0</p>
-                        </td>
-                        <td>
-                            @if($test->status == 'Active')
-                                <span class="badge badge-success">{{ $test->status }}</span>
-                            @else
-                                <span class="badge badge-danger">{{ $test->status }}</span>
-                            @endif
-                        </td>
-                        <td>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn-delete " style="margin-right: 20px" href="{{ route('delete.test',$test->id) }}">
-                                    <div class="fa-2x" style="color: #e60000">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </div>
-                                </a>
-                                <a href="">
-                                    <div class="fa-2x" style="color: #0040ff">
-                                        <i class="fa-solid fa-user-pen"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
+                            <td>{{ $index++ }}</td>
+                            <td>
+                                {{ $test->created_at }}
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{ $test->name }}</p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1">{{ $test->price }}0</p>
+                            </td>
+                            <td>
+                                @if($test->status == 'Active')
+                                    <span class="badge badge-success">{{ $test->status }}</span>
+                                @else
+                                    <span class="badge badge-danger">{{ $test->status }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <a class="btn-delete " style="margin-right: 20px"
+                                       href="{{ route('delete.test',$test->id) }}">
+                                        <div class="fa-2x" style="color: #e60000">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </div>
+                                    </a>
+                                    <a href="{{ route('edit.test',$test->id) }}">
+                                        <div class="fa-2x" style="color: #0040ff">
+                                            <i class="fa-solid fa-user-pen"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
-
             <form id="form-delete" method="POST" style="display: none">
                 @csrf
                 @method('DELETE')
             </form>
         </div>
     </main>
-
 </x-admin.layout.operator_dashboard>

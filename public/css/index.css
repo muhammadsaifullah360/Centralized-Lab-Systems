@@ -10,7 +10,11 @@ body {
     background-size: cover;
     height: 100vh;
 }
-
+.show{
+    font-family: "Poppins", Sans-serif, serif;
+    font-size: 40px;
+    font-weight: 700;
+}
 .navbar {
     /*width: 1200px;*/
     /*height: 75px;*/

@@ -29,7 +29,7 @@
                                 <label class="form-label" for="form3Example3">Email address</label>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong></strong>
                                     </span>
                                 @enderror
                             </div>

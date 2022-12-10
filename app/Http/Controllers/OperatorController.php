@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lab;
 use App\Models\Test;
 use Illuminate\Http\Request;
 
 class OperatorController extends Controller
 {
+
+
     public function index()
     {
 
-        return view('operator.dashboard');
+        $totalTests = Test::where('lab_id', auth()->user()->lab()->get()->first()->id)->count();
+        return view('operator.dashboard', compact('totalTests'));
     }
 
     public function appointmentList()
@@ -19,16 +21,28 @@ class OperatorController extends Controller
         return view('operator.lab.appointment');
     }
 
+    public function about()
+    {
+        $lab = auth()->user()->lab()->get()->first();
+        return view('operator.lab.about', compact('lab'));
+    }
+
     public function tests()
     {
-        $tests = Test::orderBy('name')->paginate(4);
+        $tests = null;
+        if (auth()->user()->lab()->get()->first()) {
+            $tests = Test::where('lab_id', auth()->user()->lab()->get()->first()->id)->get();
+        }
         return view('operator.lab.test.tests', compact('tests'));
     }
 
-    public function about()
-    {
-        return view('operator.lab.about');
-    }
+//    public function tests()
+//    {
+//        $lab = auth()->user()->lab();
+//
+//        $tests = $lab->tests()->Test::orderBy('name')->paginate(15);
+//        return view('operator.lab.test.tests', compact('tests'));
+//    }
 
     public function addTest(Request $request)
     {
@@ -56,4 +70,17 @@ class OperatorController extends Controller
         return redirect()->route('tests.dashboard', compact('tests'))->with('message', 'Test has been deleted successfully');
     }
 
+    public function editTest($id)
+    {
+
+        $tests = Test::findOrfail($id);
+        return view('operator.lab.test.edit', compact('tests'));
+    }
+
+    public function updateTest(Request $request, $id)
+    {
+        $tests = Test::findOrfail($id);
+        $tests->update($request->all());
+        return redirect()->route('tests.dashboard', compact('tests'))->with('message', 'Test has been updated successfully');
+    }
 }

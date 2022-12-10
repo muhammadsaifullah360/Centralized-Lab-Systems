@@ -11,8 +11,8 @@ class Test extends Model
 
     protected $fillable = ['name', 'price', 'description', 'status', 'lab_id'];
 
-    public function labUser()
+    public function lab()
     {
-        return $this->hasOneThrough(Lab::class, User::class);
+        return $this->belongsTo(Lab::class);
     }
 }

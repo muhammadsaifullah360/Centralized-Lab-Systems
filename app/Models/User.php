@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function lab()
     {
-        return $this->hasOne(Lab::class);
+        return $this->hasMany(Lab::class);
     }
 }

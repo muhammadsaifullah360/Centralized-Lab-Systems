@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lab;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -72,13 +73,14 @@ class AdminController extends Controller
 
     public function storeUser(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required',
             'email' => 'required | email',
             'password' => 'required',
             'phone' => 'required',
         ]);
-        User::create($request->all());
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
         return redirect()->route('admin.lab.user.index')->with('message', 'Lab Operator has been added successfully');
     }
 

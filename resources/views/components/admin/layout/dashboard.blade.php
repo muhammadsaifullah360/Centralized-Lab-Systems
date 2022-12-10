@@ -8,7 +8,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <title>{{ $title ?? 'Admin Dashboard' }}</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
@@ -28,8 +30,9 @@
                    aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
                 </a>
-                <a href="{{ route('admin.lab.user.index') }}" class="list-group-item list-group-item-action py-2 ripple"><i
-                    class="fas fa-users fa-fw me-3"></i><span>Labs Users</span></a>
+                <a href="{{ route('admin.lab.user.index') }}"
+                   class="list-group-item list-group-item-action py-2 ripple"><i
+                        class="fas fa-users fa-fw me-3"></i><span>Labs Users</span></a>
                 <a href="{{ route('admin.lab.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Laboratories</span>
                 </a>
@@ -51,7 +54,7 @@
             <!-- Brand -->
             <a class="navbar-brand" href="#">
                 <div class="">
-                    <h5 style="color: #146EBE" ><i class="fa-solid fa-user" ></i> Admin</h5>
+                    <h5 style="color: #146EBE"><i class="fa-solid fa-user"></i> Admin</h5>
                 </div>
             </a>
             <!-- Search form -->

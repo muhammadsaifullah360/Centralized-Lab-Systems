@@ -47,8 +47,8 @@ class LoginController extends Controller
         } elseif (str(auth()->user()->role)->exactly('operator')) {
             return route('operator.dashboard');
         } elseif (str(auth()->user()->role)->exactly('user')) {
-            return route('/home');
+            return route('home');
         }
-        return '/home';
+        return 'home';
     }
 }

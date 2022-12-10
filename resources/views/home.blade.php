@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf_token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/n
-    wasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/index.css')}}">
@@ -25,15 +28,34 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav navbar-nav ml-auto">
 
-                    <li class="nav-item ">
-                        <a class="nav-link hover-shadow" style="color: #ff7200" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light hover-shadow" href="{{ route('register') }}">Signup</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light hover-shadow" href="#">About us</a>
-                    </li>
+                    @guest()
+                        <li class="nav-item ">
+                            <a class="nav-link hover-shadow" style="color: #ff7200" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light hover-shadow" href="{{ route('register') }}">Signup</a>
+                        </li>
+                    @endguest
+                    @auth()
+                        <div class="dropdown">
+                            <a
+                                class="btn btn-outline-warning dropdown-toggle rounded-pill hover-shadow fw-bold"
+                                href="#"
+                                role="button"
+                                id="dropdownMenuLink"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                        @endauth
                 </ul>
             </div>
         </div>
@@ -56,47 +78,78 @@
         <div class="col align-self-center">
             <div class="card ">
                 <div class="card-body">
-                    <form>
-                        <div class="text-center mb-3 textSettings fw-bold">
+                    <form method="GET">
+                        <div class="text-center mb-3  fw-bold " style="font-family: Poppins, Sans-serif, serif;
+                        font-size: 40px;
+                        font-weight: 700;
+                        color: #ff7200;
+                        text-decoration:underline ;">
                             <label for="name">Search Here</label>
                         </div>
-                        <div class="form-group mb-4">
-                            <label for="type"></label>
-                            <select id="type" class="form-select" name="type[]" multiple>
-                                <option value="CBC">CBC</option>
-                                <option value="Blood Glucose">Blood Glucose</option>
-                                <option value="KFT">KFT</option>
-                                <option value="LFT">LFT</option>
-                                <option value="MRI Scan">MRI Scan</option>
-                                <option value="ECG">ECG</option>
-                                <option value="EEG">EEG</option>
-                                <option value="X-Rays">X-Rays</option>
-                                <option value="Ultrasound">Ultrasound</option>
-                                <option value="PET Scan">PET Scan</option>
-                            </select>
+                        <div class="form-group mb-4 ">
+                            <label for="search"></label>
+                            <input type="text" id="search" name="search" class="form-control"
+                                   placeholder="Search here...">
                         </div>
-                        <div class="form-outline mb-4">
-                            <input type="Text" id="form1Example1" class="form-control"/>
-                            <label class="form-label" for="form1Example1">Enter here if not found</label>
+                        <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong">Search</button>
+                        <div class="form-outline mt-3">
+                            <label class="form-label"><i class="fa  fa-exclamation-circle"></i>
+                                <a>Help</a>
+                            </label>
                         </div>
-                        <div class="btn btn-secondary">Search</div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-<div class="container mt-5 mb-10">
+<div class="container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in" >
     <div class="row g-0">
 
         <div class="col">
             <div class="row">
-                <div class="col-9 border">
-                    Sample
-                </div>
-                <div class="col border">
-                    asample
+                <div class="col">
+                    <table class="table align-middle mb-0 bg-white">
+                        <thead class="bg-light">
+                        <tr class="table-dark">
+                            <th>Lab</th>
+                            <th>Test Name</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(isset($results))
+                            @foreach($results as $result)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img
+                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                alt=""
+                                                style="width: 45px; height: 45px"
+                                                class="rounded-circle"
+                                            />
+                                            <div class="ms-3">
+                                                <p class="fw-bold mb-1">{{ $result->lab->name }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p class="fw-normal mb-1">{{ $result->name }}</p>
+                                    </td>
+
+                                    <td>{{ $result->price }} rs</td>
+                                    <td>
+                                        <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                            BOOK
+                                        </button>
+                                    </td>
+                                </tr>
+                        </tbody>
+                        @endforeach
+                        @endif
+                    </table>
                 </div>
             </div>
         </div>
@@ -222,10 +275,14 @@
         © 2022 Copyright:
         <a class="text-reset fw-bold" href="#">System Bot</a>
     </div>
-    <!-- Copyright -->
 </footer>
 <!-- Footer -->
 </body>
+<script>
+    function showDiv() {
+        document.getElementById('sign-in').style.display = "block";
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>

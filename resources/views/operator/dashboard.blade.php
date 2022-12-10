@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <h3 class="text-success">000</h3>
+                                        <h3 class="text-success">0{{ $totalTests }}</h3>
                                         <p class="mb-0">Total Tests</p>
                                     </div>
                                     <div class="align-self-center">
@@ -68,6 +68,11 @@
             </section>
 
             <section>
+                <style>
+                    .card{
+                        background-color: #E9E9E9;
+                    }
+                </style>
 
                 <div class="row">
                     <div class="col-xl-6 col-md-12 mb-4">

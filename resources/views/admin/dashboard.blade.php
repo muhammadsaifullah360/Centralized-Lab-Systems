@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="text-end">
                                         <h3>08</h3>
-                                        <p class="mb-0">Total Lab Admins</p>
+                                        <p class="mb-0">Total Operators</p>
                                     </div>
                                 </div>
                             </div>

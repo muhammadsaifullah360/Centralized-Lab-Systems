@@ -4,18 +4,19 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
-use App\Models\Lab;
+use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('/', 'home');
+Route::redirect('/', 'home');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 
 Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->prefix('admin')->group(function () {
@@ -41,16 +42,15 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::post('lab/test/tests', 'addTest')->name('add.test');
     Route::delete('lab/test/tests/{id}', 'deleteTest')->name('delete.test');
     Route::get('lab/about', 'about')->name('about.dashboard');
+    Route::get('lab/test/{id}/edit', 'editTest')->name('edit.test');
+    Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
 });
 
 Route::any('dd', function (Request $request) {
+//    $search = str($request->get('search'))->trim()->lower();
+//    $results = Test::where('name', 'like', '%' . $search . '%')->get();
+//    dd($results);
 //    dd($request->all());
 //    dd(User::whereDoesntHave('lab')->get()->last()->id);
-    $users = User::whereDoesntHave('lab')->get();
-    $ids = [];
-    foreach ($users as $user) {
-        $ids[] = $user->id;
-    }
-    dd($ids);
 //    dd(auth()->user()->lab()->get()->first()->id);
 })->name('dd');

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("select").select2({
-        placeholder: "Select Test Types", //placeholder
+        placeholder: "Select Tests ", //placeholder
         tags: true,
         height: 100,
         tokenSeparators: ['/',',',';'," "]
