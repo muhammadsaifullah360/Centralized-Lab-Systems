@@ -4,8 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
-use App\Models\Test;
-use App\Models\User;
+use App\Http\Controllers\PatientController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +43,11 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::get('lab/about', 'about')->name('about.dashboard');
     Route::get('lab/test/{id}/edit', 'editTest')->name('edit.test');
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
+});
+
+Route::middleware(['auth', 'role:user'])->controller(PatientController::class)->prefix('patient')->group(function () {
+    Route::get('dashboard', 'index')->name('patient.dashboard');
+    Route::get('appointment~', 'appointment')->name('appointment.dashboard');
 });
 
 Route::any('dd', function (Request $request) {

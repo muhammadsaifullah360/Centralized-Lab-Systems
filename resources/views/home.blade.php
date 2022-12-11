@@ -30,7 +30,8 @@
 
                     @guest()
                         <li class="nav-item ">
-                            <a class="nav-link hover-shadow" style="color: #ff7200" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link hover-shadow" style="color: #ff7200"
+                               href="{{ route('login') }}">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light hover-shadow" href="{{ route('register') }}">Signup</a>
@@ -40,7 +41,7 @@
                         <div class="dropdown">
                             <a
                                 class="btn btn-outline-warning dropdown-toggle rounded-pill hover-shadow fw-bold"
-                                href="#"
+                                href="{{ route('patient.dashboard') }}"
                                 role="button"
                                 id="dropdownMenuLink"
                                 data-mdb-toggle="dropdown"
@@ -48,14 +49,19 @@
                             >
                                 {{ Auth::user()->name }}
                             </a>
-
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
                         </div>
-                        @endauth
+                        <div class="dropdown" style="margin-left: 3px;">
+                            <a class=" btn btn-outline-success rounded-pill " href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -86,12 +92,16 @@
                         text-decoration:underline ;">
                             <label for="name">Search Here</label>
                         </div>
-                        <div class="form-group mb-4 ">
-                            <label for="search"></label>
-                            <input type="text" id="search" name="search" class="form-control"
-                                   placeholder="Search here...">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" name="search" class="form-control"
+                                   id="search" required/>
+                            <label for="search" class="form-label">Search here...</label>
+                            <div class="invalid-feedback"></div>
                         </div>
-                        <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong">Search</button>
+
+                        <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong rounded-pill">Search
+                        </button>
                         <div class="form-outline mt-3">
                             <label class="form-label"><i class="fa  fa-exclamation-circle"></i>
                                 <a>Help</a>
@@ -103,7 +113,7 @@
         </div>
     </div>
 </div>
-<div class="container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in" >
+<div class="container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
     <div class="row g-0">
 
         <div class="col">
@@ -141,9 +151,9 @@
 
                                     <td>{{ $result->price }} rs</td>
                                     <td>
-                                        <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                        <a type="button" class="btn btn-link btn-sm btn-rounded">
                                             BOOK
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                         </tbody>
@@ -281,6 +291,7 @@
 <script>
     function showDiv() {
         document.getElementById('sign-in').style.display = "block";
+        document.getElementById('sign-in').reset();
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
