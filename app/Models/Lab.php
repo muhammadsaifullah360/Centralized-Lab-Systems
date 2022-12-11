@@ -14,6 +14,7 @@ class Lab extends Model
         'license_number',
         'contact',
         'address',
+        'profile_image',
         'user_id'
     ];
 

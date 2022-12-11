@@ -11,9 +11,8 @@ class OperatorController extends Controller
 
     public function index()
     {
-
         $totalTests = Test::where('lab_id', auth()->user()->lab()->get()->first()->id)->count();
-        return view('operator.dashboard', compact('totalTests'));
+        return view('operator.dashboard', compact('totalTests',));
     }
 
     public function appointmentList()
@@ -35,14 +34,6 @@ class OperatorController extends Controller
         }
         return view('operator.lab.test.tests', compact('tests'));
     }
-
-//    public function tests()
-//    {
-//        $lab = auth()->user()->lab();
-//
-//        $tests = $lab->tests()->Test::orderBy('name')->paginate(15);
-//        return view('operator.lab.test.tests', compact('tests'));
-//    }
 
     public function addTest(Request $request)
     {

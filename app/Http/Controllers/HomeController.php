@@ -17,5 +17,7 @@ class HomeController extends Controller
         }
         return view('/home', compact('tests'));
     }
+    //get all tests details
+
 
 }

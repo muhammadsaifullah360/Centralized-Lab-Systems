@@ -4,7 +4,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-8 ">
                 <div class="card-body mt-5 p-4 p-md-5 shadow-3-strong text-center">
-                    <h1 class="mb-4 text-success text-decoration-underline">Well Come To {{$lab->name}}</h1>
+                   <div class=" d-flex justify-content-center"><img class="rounded-6" src="{{asset('images/'.$lab->profile_image)}}" style="width: 55px; height: 55px"> <h1 class="mb-4 text-success text-decoration-underline"> Well Come To {{$lab->name}}</h1></div>
                     <div class="row justify-content-center">
 
                         <div class="col-3">

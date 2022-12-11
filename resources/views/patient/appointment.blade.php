@@ -3,73 +3,60 @@
 
     <main style="margin-top: 58px">
         <div class="container pt-4">
-
             <div class="row">
+                <form action="{{ route('admin.lab.store') }}" method="POST">
+                    @csrf
+                    <div class="card">
+                        <div class="card-body shadow-3-strong py-5">
+                            <div class="card-header">
+                                <div class="row justify-content-center">
+                                    <form class="bg-white p-2 needs-validation" novalidate>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="justify-content-center mb-4"><h3 class="">Add
+                                                        Appoinment</h3></div>
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" class="form-control" name="name"
+                                                           id="validationCustom01" required/>
+                                                    <label for="validationCustom01" class="form-label">Test
+                                                        Name</label>
+                                                    <div class="valid-feedback">Looks good!</div>
+                                                </div>
+                                                <div class="form-outline mb-4">
+                                                    <input type="Text" id="form1Example1"
+                                                           class="form-control" name="contact"/>
+                                                    <label class="form-label" for="form1Example1">Contact
+                                                        Number</label>
+                                                </div>
 
-                <div class="col">
-                    <div class="form-outline mb-4">
-                        <input type="search" class="form-control" id="datatable-search-input">
-                        <label class="form-label" for="datatable-search-input">Search here...</label>
-                    </div>
-                    @if($message = session('message'))
-                        <div class="note note-success mb-4">
-                            {{ $message }}
+                                                <div class="form-outline mb-4">
+                                                                <textarea class="form-control" id="textAreaExample"
+                                                                          rows="3" name="address"></textarea>
+                                                    <label class="form-label"
+                                                           for="textAreaExample">Address</label>
+                                                </div>
+
+                                                <div class="form-outline mb-4">
+                                                    <input type="file" name="profile_image" class="form-control"
+                                                           aria-label="file example" required/>
+                                                    <div class="invalid-feedback">Example invalid form file
+                                                        feedback
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-mdb-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    @endif
-                    <table id="myTable"
-                           class="table align-middle mb-4 bg-white table-striped table-active shadow-3-strong ">
-                        <thead class="table-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>Date Created</th>
-                            <th>Tests</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1"></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1"></p>
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                                <span class="badge badge-danger rounded-pill d-inline"></span>
-                            </td>
-                            <td>
-                                <div class="d-flex">
-                                    <a class="btn-delete" href="" style="margin-left: 5px">
-                                        <i class="fa-solid fa-trash-can text-danger fa-2x"></i>
-
-                                    </a>
-                                    <a href="">
-                                        <i class="fa-solid fa-user-pen text-primary fa-2x"></i>
-                                    </a>
-                                    <a href="">
-                                        <i class="fa-solid fa-xmark fa-2x text-warning"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                </form>
             </div>
-            <form id="form-delete" method="POST" style="display: none">
-                @csrf
-                @method('DELETE')
-            </form>
-            </section>
-        </div>
     </main>
 
 </x-admin.layout.patient_dashboard>

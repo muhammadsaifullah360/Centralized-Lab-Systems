@@ -43,11 +43,25 @@ class AdminController extends Controller
             'contact' => 'required',
             'address' => 'required ',
             'user_id' => 'required|exists:users,id',
+            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Lab::create(request()->all());
+        $imageName = time().'.'.$request->profile_image->extension();
+        $request->profile_image->move(public_path('images'), $imageName);
+
+        Lab::create([
+            'name' => $request->name,
+            'license_number' => $request->license_number,
+            'contact' => $request->contact,
+            'address' => $request->address,
+            'user_id' => $request->user_id,
+            'profile_image' => $imageName,
+        ]);
+
         return redirect()->route('admin.lab.index')->with('message', 'Lab has been added successfully');
     }
+
+
 
     public function editLab($id)
     {

@@ -10,7 +10,7 @@
                             <i class="far fa-plus-square"></i> Add Lab
                         </button>
                         <!-- Modal -->
-                        <form action="{{ route('admin.lab.store') }}" method="POST">
+                        <form action="{{ route('admin.lab.store') }}" enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="modal fade" data-mdb-backdrop="static" data-mdb-keyboard="false"
                                  id="exampleModal"
@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row justify-content-center">
-                                                <form class="bg-white p-2 needs-validation" novalidate>
+                                                <form class="bg-white p-2 needs-validation"  novalidate>
 
                                                     <div class="row">
                                                         <div class="col-6">
@@ -50,13 +50,13 @@
                                                                 <label class="form-label" for="form1Example1">Contact
                                                                     Number</label>
                                                             </div>
-                                                            {{--                                                            <div class="mb-3">--}}
-                                                            {{--                                                                <input type="file" class="form-control"--}}
-                                                            {{--                                                                       aria-label="file example" required/>--}}
-                                                            {{--                                                                <div class="invalid-feedback">Example invalid form file--}}
-                                                            {{--                                                                    feedback--}}
-                                                            {{--                                                                </div>--}}
-                                                            {{--                                                            </div>--}}
+                                                            <div class="form-outline mb-4">
+                                                                <input type="file" name="profile_image" class="form-control"
+                                                                       aria-label="file example" required/>
+                                                                <div class="invalid-feedback">Example invalid form file
+                                                                    feedback
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="col">
                                                             <select id="inputState" class="form-select mb-3"
@@ -111,7 +111,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img
-                                        src="{{asset('images/img.png')}}"
+                                        src="{{asset('images/'.$lab->profile_image)}}"
                                         class="rounded-circle"
                                         alt=""
                                         style="width: 45px; height: 45px"

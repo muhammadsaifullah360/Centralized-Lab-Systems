@@ -100,6 +100,16 @@
                             <div class="invalid-feedback"></div>
                         </div>
 
+{{--                        <div class="form-outline mb-4">--}}
+{{--                            <label for="inputState"></label><select id="inputState" name="search"--}}
+{{--                                                                    class="form-select mb-3" required>--}}
+{{--                                @foreach($tests as $test)--}}
+{{--                                    <option--}}
+{{--                                        value="{{ $test->id }}"> {{ $test->name }} </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+
                         <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong rounded-pill">Search
                         </button>
                         <div class="form-outline mt-3">
@@ -151,7 +161,8 @@
 
                                     <td>{{ $result->price }} rs</td>
                                     <td>
-                                        <a type="button" class="btn btn-link btn-sm btn-rounded">
+                                        <a href="{{ route('appointment.dashboard') }}" type="button"
+                                           class="btn btn-link btn-sm btn-rounded">
                                             BOOK
                                         </a>
                                     </td>

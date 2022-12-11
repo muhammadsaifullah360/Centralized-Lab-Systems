@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
+use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->p
 
 Route::middleware(['auth', 'role:operator'])->controller(OperatorController::class)->prefix('operator')->group(function () {
     Route::get('dashboard', 'index')->name('operator.dashboard');
+
     Route::get('lab/appointment', 'appointmentList')->name('appointment.dashboard');
     Route::get('lab/test/tests', 'tests')->name('tests.dashboard');
     Route::post('lab/test/tests', 'addTest')->name('add.test');
@@ -51,6 +53,8 @@ Route::middleware(['auth', 'role:user'])->controller(PatientController::class)->
 });
 
 Route::any('dd', function (Request $request) {
+    $tests = Test::all();
+    dd($tests);
 //    $search = str($request->get('search'))->trim()->lower();
 //    $results = Test::where('name', 'like', '%' . $search . '%')->get();
 //    dd($results);

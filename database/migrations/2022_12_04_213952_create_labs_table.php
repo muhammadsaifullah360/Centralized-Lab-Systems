@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('license_number')->unique();
             $table->string('contact')->nullable();
             $table->string('address');
+            $table->string('profile_image')->nullable();
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
