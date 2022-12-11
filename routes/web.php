@@ -47,9 +47,9 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
 });
 
-Route::middleware(['auth', 'role:user'])->controller(PatientController::class)->prefix('patient')->group(function () {
+Route::middleware(['auth'])->controller(PatientController::class)->prefix('patient')->group(function () {
     Route::get('dashboard', 'index')->name('patient.dashboard');
-    Route::get('appointment~', 'appointment')->name('appointment.dashboard');
+//    Route::get('appointment/{id}', 'appointment')->name('appointment.dashboard');
 });
 
 Route::any('dd', function (Request $request) {

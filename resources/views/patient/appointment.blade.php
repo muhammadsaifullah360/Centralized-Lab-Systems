@@ -4,7 +4,7 @@
     <main style="margin-top: 58px">
         <div class="container pt-4">
             <div class="row">
-                <form action="{{ route('admin.lab.store') }}" method="POST">
+                <form " method="POST">
                     @csrf
                     <div class="card">
                         <div class="card-body shadow-3-strong py-5">
@@ -18,7 +18,7 @@
                                                 <div class="form-outline mb-4">
                                                     <input type="text" class="form-control" name="name"
                                                            id="validationCustom01" required/>
-                                                    <label for="validationCustom01" class="form-label">Test
+{{--                                                    <label for="validationCustom01" value="{{$tests->name}}" class="form-label">Test--}}
                                                         Name</label>
                                                     <div class="valid-feedback">Looks good!</div>
                                                 </div>
@@ -28,6 +28,11 @@
                                                     <label class="form-label" for="form1Example1">Contact
                                                         Number</label>
                                                 </div>
+                                                <div class="form-outline mb-4">
+                                                    <input type="Text" id="form1Example1"
+                                                           class="form-control disabled " name="price"/>
+                                                    <label class="form-label " for="form1Example1">price</label>
+                                                </div>
 
                                                 <div class="form-outline mb-4">
                                                                 <textarea class="form-control" id="textAreaExample"
@@ -36,13 +41,6 @@
                                                            for="textAreaExample">Address</label>
                                                 </div>
 
-                                                <div class="form-outline mb-4">
-                                                    <input type="file" name="profile_image" class="form-control"
-                                                           aria-label="file example" required/>
-                                                    <div class="invalid-feedback">Example invalid form file
-                                                        feedback
-                                                    </div>
-                                                </div>
                                                 <div class="">
                                                     <button type="button" class="btn btn-secondary"
                                                             data-mdb-dismiss="modal">

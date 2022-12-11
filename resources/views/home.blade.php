@@ -135,7 +135,7 @@
                             <th>Lab</th>
                             <th>Test Name</th>
                             <th>Price</th>
-                            <th>Actions</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -145,7 +145,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <img
-                                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                                src="{{asset('images/'.$result->lab->profile_image)}}"
                                                 alt=""
                                                 style="width: 45px; height: 45px"
                                                 class="rounded-circle"
@@ -161,7 +161,7 @@
 
                                     <td>{{ $result->price }} rs</td>
                                     <td>
-                                        <a href="{{ route('appointment.dashboard') }}" type="button"
+                                        <a href="#" type="button"
                                            class="btn btn-link btn-sm btn-rounded">
                                             BOOK
                                         </a>

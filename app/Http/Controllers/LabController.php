@@ -16,7 +16,6 @@ class LabController extends Controller
         return view('admin.lab.index', compact('labs', 'users'));
     }
 
-
     public function create()
     {
         //
