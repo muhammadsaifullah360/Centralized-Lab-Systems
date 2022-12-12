@@ -40,11 +40,10 @@
                                                 </div>
 
                                                 <div class="">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-mdb-dismiss="modal">
+                                                    <a  href="{{route('home')}}" class="btn btn-secondary">
                                                         Close
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                    </a>
+                                                    <a  type="submit" href="{{route('payment.form')}}"class="btn btn-primary">Next</a>
                                                 </div>
                                             </div>
                                     </form>

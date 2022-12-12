@@ -18,7 +18,12 @@ class PatientController extends Controller
     public function book($id)
     {
         $test = Test::findOrfail($id);
-//        dd($test->name);
         return view('patient.appointment', compact('test'));
     }
+
+    public function payment()
+    {
+        return view('patient.payment.checkout');
+    }
+
 }

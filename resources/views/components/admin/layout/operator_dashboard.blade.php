@@ -45,7 +45,7 @@
                 </a>
 
                 <a href="{{ route('about.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple ">
-                    <i class="fas fa-book-reader fa-fw me-3"></i><span>Reports</span>
+                    <i class="fas fa-book-reader fa-fw me-3"></i><span>About</span>
                 </a>
             </div>
         </div>

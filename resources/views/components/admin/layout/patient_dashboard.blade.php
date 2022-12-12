@@ -32,7 +32,7 @@
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                 </a>
 
-                <a href="{{route('appointment.dashboard') }}"
+                <a href="#"
                    class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-users fa-fw me-3"></i><span>Appointment</span></a>
 

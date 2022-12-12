@@ -5,12 +5,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
+Route::post ( '/', [PaymentController::class,'call'] );
 Route::redirect('/', 'home');
 
 Auth::routes();
@@ -50,7 +51,8 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
 Route::middleware(['auth'])->controller(PatientController::class)->group(function () {
     Route::get('patient/dashboard', 'index')->name('patient.dashboard');
     Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
-    Route::view('patient/appointment', 'patient.appointment')->name('patient.appointment');
+    Route::get('patient/payment/checkout', 'payment')->name('payment.form');
+
 });
 
 Route::any('dd', function (Request $request) {
