@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,16 +15,10 @@ class PatientController extends Controller
         return view('patient.dashboard');
     }
 
-    public function appointment($id)
+    public function book($id)
     {
-
-        $test = Test::find($id);
+        $test = Test::findOrfail($id);
+//        dd($test->name);
         return view('patient.appointment', compact('test'));
     }
-//    public function appointment($id){
-//        $users = User::orderBy('name')->pluck('name', 'id');
-//        $tests = Test::findOrfail($id);
-//        return view('patient.appointment',compact('tests'));
-//    }
-
 }

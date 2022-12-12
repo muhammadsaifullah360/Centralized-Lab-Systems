@@ -38,7 +38,7 @@ Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->p
 Route::middleware(['auth', 'role:operator'])->controller(OperatorController::class)->prefix('operator')->group(function () {
     Route::get('dashboard', 'index')->name('operator.dashboard');
 
-    Route::get('lab/appointment', 'appointmentList')->name('appointment.dashboard');
+    Route::get('lab/appointment', 'appointmentList')->name('appointment');
     Route::get('lab/test/tests', 'tests')->name('tests.dashboard');
     Route::post('lab/test/tests', 'addTest')->name('add.test');
     Route::delete('lab/test/tests/{id}', 'deleteTest')->name('delete.test');
@@ -47,9 +47,10 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
 });
 
-Route::middleware(['auth'])->controller(PatientController::class)->prefix('patient')->group(function () {
-    Route::get('dashboard', 'index')->name('patient.dashboard');
-//    Route::get('appointment/{id}', 'appointment')->name('appointment.dashboard');
+Route::middleware(['auth'])->controller(PatientController::class)->group(function () {
+    Route::get('patient/dashboard', 'index')->name('patient.dashboard');
+    Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
+    Route::view('patient/appointment', 'patient.appointment')->name('patient.appointment');
 });
 
 Route::any('dd', function (Request $request) {

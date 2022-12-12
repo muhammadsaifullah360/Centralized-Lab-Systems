@@ -161,7 +161,7 @@
 
                                     <td>{{ $result->price }} rs</td>
                                     <td>
-                                        <a href="#" type="button"
+                                        <a href="{{ route('appointment.dashboard', $result->id) }}" type="button"
                                            class="btn btn-link btn-sm btn-rounded">
                                             BOOK
                                         </a>

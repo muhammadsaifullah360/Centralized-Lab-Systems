@@ -4,7 +4,7 @@
     <main style="margin-top: 58px">
         <div class="container pt-4">
             <div class="row">
-                <form " method="POST">
+                <form method="POST" action="hello">
                     @csrf
                     <div class="card">
                         <div class="card-body shadow-3-strong py-5">
@@ -16,22 +16,20 @@
                                                 <div class="justify-content-center mb-4"><h3 class="">Add
                                                         Appoinment</h3></div>
                                                 <div class="form-outline mb-4">
-                                                    <input type="text" class="form-control" name="name"
-                                                           id="validationCustom01" required/>
-{{--                                                    <label for="validationCustom01" value="{{$tests->name}}" class="form-label">Test--}}
-                                                        Name</label>
+                                                    <input type="text" class="form-control" name="name" value="{{ $test->name }}"
+                                                           id="name" readonly required/>
+                                                    <label class="form-label" for="name">Test Name</label>
                                                     <div class="valid-feedback">Looks good!</div>
+                                                </div>
+                                                <div class="form-outline mb-4">
+                                                    <input type="text" id="form1Example1"
+                                                           class="form-control" name="price" value="{{ $test->price }}" readonly/>
+                                                    <label class="form-label " for="form1Example1">Test Price</label>
                                                 </div>
                                                 <div class="form-outline mb-4">
                                                     <input type="Text" id="form1Example1"
                                                            class="form-control" name="contact"/>
-                                                    <label class="form-label" for="form1Example1">Contact
-                                                        Number</label>
-                                                </div>
-                                                <div class="form-outline mb-4">
-                                                    <input type="Text" id="form1Example1"
-                                                           class="form-control disabled " name="price"/>
-                                                    <label class="form-label " for="form1Example1">price</label>
+                                                    <label class="form-label" for="form1Example1">Contact Number</label>
                                                 </div>
 
                                                 <div class="form-outline mb-4">
