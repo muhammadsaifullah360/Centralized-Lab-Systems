@@ -47,6 +47,9 @@
                                 <button class='form-control btn btn-primary submit-button'
                                         type='submit' style="margin-top: 10px;">Confirm
                                 </button>
+                                <a href="#" class='form-control btn btn-outline-danger submit-button'
+                                   type='button' style="margin-top: 10px;">Cancel
+                                </a>
                             </div>
                         </div>
 
@@ -58,7 +61,6 @@
                 @endif
             </div>
             <div class='col-md-4'></div>
-        </div>
         </div>
         <script src="https://code.jquery.com/jquery-1.12.3.min.js"
                 integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
@@ -122,6 +124,5 @@
                 }
             })
         </script>
-        </div>
     </main>
 </x-admin.layout.patient_dashboard>

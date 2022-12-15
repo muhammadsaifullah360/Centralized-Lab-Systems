@@ -23,7 +23,8 @@ class PatientController extends Controller
 
     public function payment()
     {
-        return view('patient.payment.checkout');
+        $test = Test::all();
+        return view('patient.payment.checkout',compact('test'));
     }
 
 }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -100,15 +99,15 @@
                             <div class="invalid-feedback"></div>
                         </div>
 
-{{--                        <div class="form-outline mb-4">--}}
-{{--                            <label for="inputState"></label><select id="inputState" name="search"--}}
-{{--                                                                    class="form-select mb-3" required>--}}
-{{--                                @foreach($tests as $test)--}}
-{{--                                    <option--}}
-{{--                                        value="{{ $test->id }}"> {{ $test->name }} </option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="form-outline mb-4">--}}
+                        {{--                            <label for="inputState"></label><select id="inputState" name="search"--}}
+                        {{--                                                                    class="form-select mb-3" required>--}}
+                        {{--                                @foreach($tests as $test)--}}
+                        {{--                                    <option--}}
+                        {{--                                        value="{{ $test->id }}"> {{ $test->name }} </option>--}}
+                        {{--                                @endforeach--}}
+                        {{--                            </select>--}}
+                        {{--                        </div>--}}
 
                         <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong rounded-pill">Search
                         </button>
@@ -123,13 +122,12 @@
         </div>
     </div>
 </div>
-<div class="container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
+<div class="container mt-5 mb-10 animate__animated animate__fadeInDown " id="sign-in">
     <div class="row g-0">
-
         <div class="col">
             <div class="row">
                 <div class="col">
-                    <table class="table align-middle mb-0 bg-white">
+                    <table class="table align-middle mb-0 bg-white" >
                         <thead class="bg-light">
                         <tr class="table-dark">
                             <th>Lab</th>
@@ -174,7 +172,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <!-- Footer -->
@@ -299,12 +296,7 @@
 </footer>
 <!-- Footer -->
 </body>
-<script>
-    function showDiv() {
-        document.getElementById('sign-in').style.display = "block";
-        document.getElementById('sign-in').reset();
-    }
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
@@ -313,4 +305,10 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="{{ asset('js/mdb.min.js') }}"></script>
 <script src="{{ asset('js/index.js') }}"></script>
+<script>
+    function showDiv() {
+        document.getElementById('sign-in').style.display = "block";
+        document.getElementById('sign-in').reset();
+    }
+</script>
 </html>

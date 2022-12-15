@@ -74,15 +74,15 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <form id="form-delete" method="POST" style="display: none">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
                         @endif
                         </tbody>
+                        <form id="form-delete" method="POST" style="display: none">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     </table>
                     {!! $users->withQueryString()->links() !!}
                 </div>

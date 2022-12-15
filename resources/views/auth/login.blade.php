@@ -8,10 +8,11 @@
     <title>Login</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/background_image.css')}}">
 </head>
 <body>
 
-<div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+<div class="px-4 py-5 px-md-5 text-center text-lg-start">
     <div class="container vh-100">
         <div class="row justify-content-center gx-lg-5 align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
@@ -20,7 +21,7 @@
                         <div class="card-header h5 text-center fw-bold mb-4 fs-2 border-0">
                             <span style="color: hsl(218, 81%, 75%)">Login</span>
                         </div>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form class="needs-validation" novalidate method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-outline mb-4 justify-content-center d-flex">
                                 <input type="email" id="email"
@@ -58,6 +59,9 @@
                             <button type="submit" class="btn btn-primary btn-block mb-4">
                                 Login
                             </button>
+                            <a type="button" href="{{route('home')}}" class="btn btn-outline-danger btn-block mb-2">
+                                Cancel
+                            </a>
                             @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}

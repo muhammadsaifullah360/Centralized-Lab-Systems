@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::post ( '/', [PaymentController::class,'call'] );
+Route::post('/', [PaymentController::class, 'call']);
 Route::redirect('/', 'home');
 
 Auth::routes();
