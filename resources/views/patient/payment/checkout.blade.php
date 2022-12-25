@@ -1,9 +1,7 @@
 <x-admin.layout.patient_dashboard>
     <main style="margin-top: 58px">
         <div class="container pt-4">
-            <div class="row">
-                <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
-                <div class="col-2"></div>
+            <div class="row justify-content-center">
                 <div class="col-4">
                     <form accept-charset="UTF-8" action="/" class="require-validation"
                           data-cc-on-file="false"
@@ -60,8 +58,8 @@
           Session::get('success-message') }}</div>
                 @endif
             </div>
-            <div class='col-md-4'></div>
         </div>
+        <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
         <script src="https://code.jquery.com/jquery-1.12.3.min.js"
                 integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
                 crossorigin="anonymous"></script>

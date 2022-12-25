@@ -89,7 +89,7 @@
                         font-weight: 700;
                         color: #ff7200;
                         text-decoration:underline ;">
-                            <label for="name">Search Here</label>
+                            <label for="name">Search</label>
                         </div>
 
                         <div class="form-outline mb-4">
@@ -291,7 +291,8 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
         © 2022 Copyright:
-        <a class="text-reset fw-bold" href="#">System Bot</a>
+        <a class="text-reset fw-bold" href="#">SP19-BSE
+        </a>
     </div>
 </footer>
 <!-- Footer -->

@@ -65,7 +65,6 @@
                                 @enderror
                                 <label class="form-label" for="form3Example4">Password</label>
                             </div>
-
                             <div class="form-outline mb-4">
                                 <input type="password" id="password_confirm" class="form-control"
                                        @error('password') is-invalid @enderror name="password_confirmation" required
@@ -76,6 +75,14 @@
                                     </span>
                                 @enderror
                                 <label class="form-label" for="form3Example4">Confirm Password</label>
+                            </div>
+                            <div class="form-check d-flex  mb-4">
+                                <input class="form-check-input me-2" name="remember" type="checkbox"
+                                       id="remember"
+                                       {{ old('remember') ? 'checked' : '' }} checked/>
+                                <label class="form-check-label" for="remember">
+                                    Remember me
+                                </label>
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-block mb-4">

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('test');
-            $table->string('status');
+            $table->string('status')->dafault('pending');
             $table->string('price');
             $table->string('address');
             $table->timestamps();

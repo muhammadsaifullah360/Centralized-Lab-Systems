@@ -16,6 +16,8 @@ Route::redirect('/', 'home');
 
 Auth::routes();
 
+//Route::view('password/reset', 'auth.passwords.reset')->name('password.request');
+
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
@@ -51,13 +53,20 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
 Route::middleware(['auth'])->controller(PatientController::class)->group(function () {
     Route::get('patient/dashboard', 'index')->name('patient.dashboard');
     Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
+    Route::post('patient/appointment', 'add_appointment')->name('add.appointment');
     Route::get('patient/payment/checkout', 'payment')->name('payment.form');
 
 });
 
 Route::any('dd', function (Request $request) {
-    $tests = Test::all();
-    dd($tests);
+    $data = $request->validate([
+        'test' => 'required',
+        'price' => 'required',
+        'address' => 'required',
+        'phone' => 'required',
+    ]);
+    dd($data);
+
 //    $search = str($request->get('search'))->trim()->lower();
 //    $results = Test::where('name', 'like', '%' . $search . '%')->get();
 //    dd($results);

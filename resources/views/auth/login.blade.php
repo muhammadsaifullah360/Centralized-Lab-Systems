@@ -48,7 +48,7 @@
                                 <label class="form-label" for="form3Example4">Password</label>
                             </div>
 
-                            <div class="form-check d-flex justify-content-center mb-4">
+                            <div class="form-check d-flex  mb-4">
                                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33"
                                        {{ old('remember') ? 'checked' : '' }} checked/>
                                 <label class="form-check-label" for="form2Example33">
