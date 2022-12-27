@@ -59,18 +59,5 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
 });
 
 Route::any('dd', function (Request $request) {
-    $data = $request->validate([
-        'test' => 'required',
-        'price' => 'required',
-        'address' => 'required',
-        'phone' => 'required',
-    ]);
-    dd($data);
-
-//    $search = str($request->get('search'))->trim()->lower();
-//    $results = Test::where('name', 'like', '%' . $search . '%')->get();
-//    dd($results);
-//    dd($request->all());
-//    dd(User::whereDoesntHave('lab')->get()->last()->id);
-//    dd(auth()->user()->lab()->get()->first()->id);
+    dd($request->all());
 })->name('dd');

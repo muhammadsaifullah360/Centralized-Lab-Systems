@@ -1,4 +1,14 @@
-<link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/background_image.css')}}">
+    <title>Reset Password</title>
+</head>
+<body>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -7,7 +17,7 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success animate__animated animate__bounce">
                             {{ session('status') }}
                         </div>
                     @endif
@@ -44,3 +54,8 @@
         </div>
     </div>
 </div>
+</body>
+<script src="{{ asset('js/app.js') }}"></script>
+</html>
+
+

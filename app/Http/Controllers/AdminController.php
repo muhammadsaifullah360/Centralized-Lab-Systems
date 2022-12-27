@@ -94,6 +94,7 @@ class AdminController extends Controller
             'phone' => 'required',
         ]);
         $data['password'] = Hash::make($data['password']);
+
         User::create($data);
         return redirect()->route('admin.lab.user.index')->with('message', 'Lab Operator has been added successfully');
     }
