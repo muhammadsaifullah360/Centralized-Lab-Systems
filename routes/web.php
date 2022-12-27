@@ -18,8 +18,10 @@ Auth::routes();
 
 //Route::view('password/reset', 'auth.passwords.reset')->name('password.request');
 
+
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('auth/changePassword',[PatientController::class,'change'])->name('change');
 
 
 Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->prefix('admin')->group(function () {

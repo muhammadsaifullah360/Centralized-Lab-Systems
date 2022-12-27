@@ -33,7 +33,6 @@
                             </p>
                         </div>
 
-
                         <div class="form-outline mb-4">
                             <input name="password" type="password" id="password" class="form-control
                                        @error('password') is-invalid @enderror" required

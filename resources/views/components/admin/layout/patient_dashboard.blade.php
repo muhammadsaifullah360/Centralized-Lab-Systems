@@ -82,7 +82,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('change') }}" class="dropdown-item">
                                     Change Password
                                 </a>
                                 <a href="{{route('home')}}" class="dropdown-item">

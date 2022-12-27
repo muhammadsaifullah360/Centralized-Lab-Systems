@@ -30,16 +30,17 @@
                                                 <label class="form-label " for="form1Example1">Test Price</label>
                                             </div>
                                             <div class="form-outline mb-4">
-                                                <input type="Text" id="form1Example1"
-                                                       class="form-control" name="contact"/>
+                                                <input name="contact" type="Text" id="contact"
+                                                       value="{{ $user->phone ?? '' }}"
+                                                       class="form-control" required/>
                                                 <label class="form-label" for="form1Example1">Contact Number</label>
                                             </div>
 
                                             <div class="form-outline mb-4">
-                                                                <textarea class="form-control" id="textAreaExample"
-                                                                          rows="3" name="address"></textarea>
+                                                <textarea class="form-control" id="textAreaExample"
+                                                          rows="3" name="address"></textarea>
                                                 <label class="form-label"
-                                                       for="textAreaExample">Address</label>
+                                                       for="address">{{ $user->address }}</label>
                                             </div>
 
                                             <div class="">

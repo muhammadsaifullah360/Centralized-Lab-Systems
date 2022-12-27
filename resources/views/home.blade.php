@@ -127,8 +127,8 @@
         <div class="col">
             <div class="row">
                 <div class="col">
-                    <table class="table align-middle mb-0 bg-white" >
-                        <thead class="bg-light">
+                    <table class="table align-middle mb-0 bg-white">
+                        <thead class="bg-light ">
                         <tr class="table-dark">
                             <th>Lab</th>
                             <th>Test Name</th>

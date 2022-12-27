@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Test;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -16,8 +17,9 @@ class PatientController extends Controller
 
     public function book($id = 0)
     {
+       $user = auth()->user();
         if ($test = Test::find($id)) {
-            return view('patient.appointment', compact('test'));
+            return view('patient.appointment', compact('test','user'));
         }
         return view('patient.appointment');
 
@@ -42,4 +44,8 @@ class PatientController extends Controller
         return view('patient.payment.checkout', compact('test'));
     }
 
+    public function change()
+    {
+        return view('auth.changePassword');
+    }
 }
