@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Test;
 use Illuminate\Http\Request;
 
@@ -73,5 +74,10 @@ class OperatorController extends Controller
         $tests = Test::findOrfail($id);
         $tests->update($request->all());
         return redirect()->route('tests.dashboard', compact('tests'))->with('message', 'Test has been updated successfully');
+    }
+
+    public function Show_appointmentList(){
+        $appointments = Appointment::all();
+        return view('operator.lab.appointment', compact('appointments'));
     }
 }

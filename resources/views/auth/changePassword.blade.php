@@ -5,17 +5,17 @@
             <div class="col-lg-7 mb-5 mb-lg-0">
                 <div class="card">
                     <div class="card-body py-5 px-md-5">
-                        <div class="card-header h5 text-center fw-bold mb-4 fs-2 border-0">
+                        <div class="card-header h5  fw-bold mb-4 fs-2 border-0">
                             <span style="color: hsl(218, 81%, 75%)">Change Password</span>
                         </div>
+                        @if($message = session('message'))
+                            <div class="note note-success mb-4">
+                                {{ $message }}
+                            </div>
+                        @endif
+
                         <form action="{{route('update-password')}}" method="POST" class="needs-validation" novalidate>
                             @csrf
-                            @if($message = session('message'))
-                                <div class="note note-success mb-4">
-                                    {{ $message }}
-                                </div>
-                            @endif
-
                             <div class="form-outline mb-4">
                                 <input name="old_password" type="password" id="old_password" class="form-control
                                        @error('password') is-invalid @enderror" required

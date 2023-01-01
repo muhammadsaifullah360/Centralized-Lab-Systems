@@ -6,7 +6,6 @@ use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,7 +40,7 @@ Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->p
 Route::middleware(['auth', 'role:operator'])->controller(OperatorController::class)->prefix('operator')->group(function () {
     Route::get('dashboard', 'index')->name('operator.dashboard');
 
-    Route::get('lab/appointment', 'appointmentList')->name('appointment');
+    Route::get('lab/appointment', 'Show_appointmentList')->name('appointment');
     Route::get('lab/test/tests', 'tests')->name('tests.dashboard');
     Route::post('lab/test/tests', 'addTest')->name('add.test');
     Route::delete('lab/test/tests/{id}', 'deleteTest')->name('delete.test');
@@ -54,6 +53,7 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::get('patient/dashboard', 'index')->name('patient.dashboard');
     Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
     Route::post('book/test', 'store')->name('appointment.store');
+    Route::get('all-appointments', 'appointmentList')->name('appointment.list');
 
     Route::get('patient/payment/checkout', 'payment')->name('payment.form');
 
@@ -66,11 +66,6 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::post('patient/test', 'addtest')->name('store.test');
 });
 
-Route::any('dd', function (Request $request) {
-    dd($request->validate([
-        'test' => 'required',
-        'price' => 'required',
-        'address' => 'required',
-        'user_id' => 'required|exists:users,id',
-    ]));
+Route::any('dd', function () {
+
 })->name('dd');

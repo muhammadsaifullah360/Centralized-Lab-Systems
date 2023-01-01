@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Fortest;
 use App\Models\Test;
 use App\Models\User;
@@ -12,8 +13,12 @@ class PatientController extends Controller
 {
     public function index()
     {
-        return view('patient.dashboard');
+        $TotalAppointments = Appointment::count();
+        $pending = Appointment::where('status', 'pending')->count();
+        $approved = Appointment::where('status', 'approve')->count();
+        return view('patient.dashboard', compact('TotalAppointments', 'pending', 'approved'));
     }
+
 
     public function book($id = 0)
     {
@@ -27,20 +32,18 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->validate([
+        $request->validate([
             'test' => 'required',
-            'status' => 'required',
             'price' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'user_id' => 'required|exists:users,id',
-        ]));
+            'user_id' => 'required',
+        ]);
 
+        Appointment::create($request->all());
 
-//        Appointment::create($request->all());
-//
-//        return redirect()->route('patient.dashboard')
-//            ->with('success', 'Appointment created successfully.');
+        return redirect()->route('patient.dashboard')
+            ->with('success', 'Appointment created successfully.');
     }
 
     public function payment()
@@ -77,6 +80,12 @@ class PatientController extends Controller
     {
         return view('patient.test');
     }
+
+    public function appointmentList(){
+        $appointments = Appointment::all();
+        return view('patient.appointmentList', compact('appointments'));
+    }
+
 
 
     /////for testing purpose

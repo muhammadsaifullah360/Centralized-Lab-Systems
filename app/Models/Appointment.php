@@ -17,4 +17,5 @@ class Appointment extends Model
         'status',
         'user_id',
     ];
+
 }

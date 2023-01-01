@@ -10,7 +10,7 @@
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
                                         <div class="align-self-center">
-                                            <h2 class="h1 mb-0 me-4">$36</h2>
+                                            <h2 class="h1 mb-0 me-4">0{{ $TotalAppointments ?? '' }}</h2>
                                         </div>
                                         <div>
                                             <h4 class="mb-0">Booked Appointment</h4>
@@ -29,7 +29,7 @@
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
                                         <div class="align-self-center">
-                                            <h2 class="h1 mb-0 me-4">$36</h2>
+                                            <h2 class="h1 mb-0 me-4">0{{ $pending }}</h2>
                                         </div>
                                         <div>
                                             <h4 class="mb-0">Pending Appointment</h4>
@@ -50,7 +50,7 @@
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
                                         <div class="align-self-center">
-                                            <h2 class="h1 mb-0 me-4">$36</h2>
+                                            <h2 class="h1 mb-0 me-4">0{{$approved}}</h2>
                                         </div>
                                         <div>
                                             <h4 class="mb-0">Approved Appointments</h4>

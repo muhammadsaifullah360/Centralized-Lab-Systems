@@ -9,7 +9,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-8 ">
                 <div class="card-body p-4 p-md-5 text-center text-decoration-underline">
-                    <h3 class="mb-4">Update Users Details </h3>
+                    <h3 class="mb-4">Update Tests Details </h3>
                     <form method="post">
                         @csrf
                         @method('PUT')

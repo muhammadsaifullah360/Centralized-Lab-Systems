@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row justify-content-center">
-                                                <form class="bg-white p-2 needs-validation"  novalidate>
+                                                <form class="bg-white p-2 needs-validation" novalidate>
 
                                                     <div class="row">
                                                         <div class="col-6">
@@ -45,13 +45,14 @@
                                                                 </label>
                                                             </div>
                                                             <div class="form-outline mb-4">
-                                                                <input type="Text" id="form1Example1"
+                                                                <input type="Text" id="numberField"
                                                                        class="form-control" name="contact"/>
                                                                 <label class="form-label" for="form1Example1">Contact
                                                                     Number</label>
                                                             </div>
                                                             <div class="form-outline mb-4">
-                                                                <input type="file" name="profile_image" class="form-control"
+                                                                <input type="file" name="profile_image"
+                                                                       class="form-control"
                                                                        aria-label="file example" required/>
                                                                 <div class="invalid-feedback">Example invalid form file
                                                                     feedback
@@ -94,61 +95,62 @@
                         {{ $message }}
                     </div>
                 @endif
-                {{--        tabel start from here--}}
-                <table class="table align-middle mb-4 bg-white shadow-3-strong">
-                    <thead class="table-dark">
-                    <tr>
-                        <th>Lab Name</th>
-                        <th>License Number</th>
-                        <th>Contact</th>
-                        <th>Username</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($labs as $lab)
+                <div class="table-responsive">
+                    <table class="table align-middle mb-4 bg-white shadow-3-strong">
+                        <thead class="table-dark">
                         <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img
-                                        src="{{asset('images/'.$lab->profile_image)}}"
-                                        class="rounded-circle"
-                                        alt=""
-                                        style="width: 45px; height: 45px"
-                                    />
-                                    <div class="ms-3">
-                                        <p class="fw-bold mb-1">{{ $lab->name }}</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1">{{ $lab->license_number }}</p>
-
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1">{{ $lab->contact}}</p>
-                            </td>
-                            <td>
-                                <p class="badge badge-primary rounded-pill d-inline">{{ $lab->user->name }}</p>
-                            </td>
-                            <td>
-                                <div class="d-flex justify-content-between">
-                                    <a class="btn-delete" href="{{ route('delete.lab',$lab->id) }}">
-                                        <div class="fa-2x" style="color: #e60000">
-                                            <i class="fa-solid fa-trash-can"></i>
-                                        </div>
-                                    </a>
-                                    <a href="{{ route('edit.labs',$lab->id) }}">
-                                        <div class="fa-2x" style="color: #0040ff">
-                                            <i class="fa-solid fa-user-pen"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </td>
+                            <th>Lab Name</th>
+                            <th>License Number</th>
+                            <th>Contact</th>
+                            <th>Username</th>
+                            <th>Actions</th>
                         </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        @foreach($labs as $lab)
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img
+                                            src="{{asset('images/'.$lab->profile_image)}}"
+                                            class="rounded-circle"
+                                            alt=""
+                                            style="width: 45px; height: 45px"
+                                        />
+                                        <div class="ms-3">
+                                            <p class="fw-bold mb-1">{{ $lab->name }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">{{ $lab->license_number }}</p>
+
+                                </td>
+                                <td>
+                                    <p class="fw-normal mb-1">{{ $lab->contact}}</p>
+                                </td>
+                                <td>
+                                    <p class="badge badge-primary rounded-pill d-inline">{{ $lab->user->name }}</p>
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn-delete" href="{{ route('delete.lab',$lab->id) }}">
+                                            <div class="fa-2x" style="color: #e60000">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </div>
+                                        </a>
+                                        <a href="{{ route('edit.labs',$lab->id) }}">
+                                            <div class="fa-2x" style="color: #0040ff">
+                                                <i class="fa-solid fa-user-pen"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <form id="form-delete" method="POST" style="display: none">
                     @csrf
                     @method('DELETE')
