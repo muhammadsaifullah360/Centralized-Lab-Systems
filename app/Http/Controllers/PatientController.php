@@ -2,40 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fortest;
 use App\Models\Test;
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PatientController extends Controller
 {
-
     public function index()
     {
         return view('patient.dashboard');
     }
 
-
     public function book($id = 0)
     {
-       $user = auth()->user();
+        $user = auth()->user();
         if ($test = Test::find($id)) {
-            return view('patient.appointment', compact('test','user'));
+            return view('patient.appointment', compact('test', 'user'));
         }
         return view('patient.appointment');
 
     }
 
-    public function add_appointment(Request $request)
+    public function store(Request $request)
     {
-        $data = $request->validate([
+        dd($request->validate([
             'test' => 'required',
+            'status' => 'required',
             'price' => 'required',
             'address' => 'required',
             'phone' => 'required',
-        ]);
-        dd($data);
-//        Appointment::create($data);
-//        return redirect()->route('patient.dashboard')->with('message', 'Appointment has been booked successfully');
+            'user_id' => 'required|exists:users,id',
+        ]));
+
+
+//        Appointment::create($request->all());
+//
+//        return redirect()->route('patient.dashboard')
+//            ->with('success', 'Appointment created successfully.');
     }
 
     public function payment()
@@ -44,8 +49,44 @@ class PatientController extends Controller
         return view('patient.payment.checkout', compact('test'));
     }
 
-    public function change()
+    public function changePassword()
     {
         return view('auth.changePassword');
+    }
+
+    public function updatePassword(Request $request)
+    {
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("message", "Password changed successfully!");
+    }
+
+    public function test()
+    {
+        return view('patient.test');
+    }
+
+
+    /////for testing purpose
+    public function addtest(Request $request)
+    {
+        $request->validate([
+            'text' => 'required',
+            'num' => 'required'
+        ]);
+        Fortest::create($request->all());
+        return back();
     }
 }

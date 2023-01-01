@@ -6,7 +6,6 @@ use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
-use App\Models\Test;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +20,6 @@ Auth::routes();
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
-Route::get('auth/changePassword',[PatientController::class,'change'])->name('change');
 
 
 Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->prefix('admin')->group(function () {
@@ -55,11 +53,24 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
 Route::middleware(['auth'])->controller(PatientController::class)->group(function () {
     Route::get('patient/dashboard', 'index')->name('patient.dashboard');
     Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
-    Route::post('patient/appointment', 'add_appointment')->name('add.appointment');
+    Route::post('book/test', 'store')->name('appointment.store');
+
     Route::get('patient/payment/checkout', 'payment')->name('payment.form');
 
+    Route::get('auth/changePassword', 'changePassword')->name('change');
+    Route::post('/auth/changePassword', 'updatePassword')->name('update-password');
+
+
+    ////for testing purpose
+    Route::get('patient/test', 'test')->name('test');
+    Route::post('patient/test', 'addtest')->name('store.test');
 });
 
 Route::any('dd', function (Request $request) {
-    dd($request->all());
+    dd($request->validate([
+        'test' => 'required',
+        'price' => 'required',
+        'address' => 'required',
+        'user_id' => 'required|exists:users,id',
+    ]));
 })->name('dd');

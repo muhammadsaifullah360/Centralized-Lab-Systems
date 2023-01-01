@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status')->dafault('pending');
             $table->string('price');
             $table->string('address');
+            $table->string('phone');
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });

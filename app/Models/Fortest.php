@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model
+class Fortest extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'test',
-        'price',
-        'address',
-        'phone',
-        'status',
-        'user_id',
+        'text',
+        'num'
     ];
+    public $timestamps = false;
 }
