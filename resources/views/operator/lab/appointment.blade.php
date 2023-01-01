@@ -38,9 +38,9 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary" data-mdb-toggle="modal"
+                                                <a href="{{ route('edit.appointment', $appointment->id) }}" type="button" class="btn btn-primary" data-mdb-toggle="modal"
                                                         data-mdb-target="#exampleModal"> view
-                                                </button>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -60,7 +60,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <div class="text-center"><h5 class="modal-title" id="exampleModalLabel">Add
+                            <div class="text-center"><h5 class="modal-title" id="exampleModalLabel">
                                     Appointment
                                     Details</h5></div>
                             <button type="button" class="btn-close" data-mdb-dismiss="modal"
@@ -71,8 +71,9 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-outline mb-4">
-                                            <input type="text" name="name" value="{{ $appointment->test }}" class="form-control"
-                                                   id="name" required/>
+                                            <input type="text" name="name" id="name" value=""
+                                                   class="form-control"
+                                                    required/>
                                             <label for="name" class="form-label">Test Name</label>
                                             <div class="invalid-feedback"></div>
                                         </div>
@@ -87,7 +88,8 @@
                                                    id="name" required/>
                                             <label for="name" class="form-label">Phone Number</label>
                                             <div class="invalid-feedback"></div>
-                                        </div><div class="form-outline mb-4">
+                                        </div>
+                                        <div class="form-outline mb-4">
                                             <input type="text" name="name" class="form-control"
                                                    id="name" required/>
                                             <label for="name" class="form-label">Status</label>
@@ -95,7 +97,7 @@
                                         </div>
                                         <div class="form-outline mb-4">
                                             <textarea type="text" name="name" class="form-control"
-                                                   id="name" required></textarea>
+                                                      id="name" required></textarea>
                                             <label for="name" class="form-label">Address</label>
                                             <div class="invalid-feedback"></div>
                                         </div>

@@ -80,4 +80,8 @@ class OperatorController extends Controller
         $appointments = Appointment::all();
         return view('operator.lab.appointment', compact('appointments'));
     }
+    public function edit_appointment($id){
+        $app = Appointment::find($id);
+        return view('operator.lab.appointment', compact('app'));
+    }
 }
