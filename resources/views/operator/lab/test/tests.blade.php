@@ -42,19 +42,19 @@
                                                             </label>
                                                         </div>
                                                         <div class="form-outline mb-4">
+                                                                <textarea name="description" class="form-control"
+                                                                          id="textAreaExample"
+                                                                          rows="3"></textarea>
+                                                            <label class="form-label"
+                                                                   for="textAreaExample">Description</label>
+                                                        </div>
+                                                        <div class="form-outline mb-4">
                                                             <select id="inputState" name="status"
                                                                     class="form-select mb-3">
                                                                 <options></options>
                                                                 <option>Active</option>
                                                                 <option>Inactive</option>
                                                             </select>
-                                                        </div>
-                                                        <div class="form-outline shadow-3-strong rounded-2">
-                                                                <textarea name="description" class="form-control"
-                                                                          id="textAreaExample"
-                                                                          rows="3"></textarea>
-                                                            <label class="form-label"
-                                                                   for="textAreaExample">Description</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -80,15 +80,16 @@
             @endif
 
 
-            <table class="table align-middle mb-4 bg-white table-striped table-active  shadow-3-strong">
+            <table class="table align-middle mb-4 bg-white table-striped table-active  shadow-3-strong"
+                   style="padding: 0px important">
                 <thead class="table-dark">
                 <tr>
-                    <th width="5%">#</th>
-                    <th width="15%">Date Created</th>
-                    <th width="25%">Name</th>
-                    <th width="15%">Price</th>
-                    <th width="15%">Status</th>
-                    <th class=" d-flex justify-content-center">Actions</th>
+                    <th width="5%" class="p-1">#</th>
+                    <th width="15%" class="p-1">Date Created</th>
+                    <th width="25%" class="p-1">Name</th>
+                    <th width="15%" class="p-1">Price</th>
+                    <th width="15%" class="p-1">Status</th>
+                    <th class=" d-flex justify-content-center p-1">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -123,7 +124,7 @@
                                     </a>
                                     <a href="{{ route('edit.test',$test->id) }}">
                                         <div class="fa-2x" style="color: #0040ff">
-                                            <i class="fa-solid fa-user-pen"></i>
+                                            <i class="fa-solid fa-edit"></i>
                                         </div>
                                     </a>
                                 </div>

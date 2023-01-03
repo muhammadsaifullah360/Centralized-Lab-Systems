@@ -36,20 +36,19 @@
                                 </div>
 
                                 <div class="form-outline mb-4">
+                                    <textarea class="form-control" id="description"
+                                              rows="3">{{ $tests->description }}
+                                    </textarea>
+                                    <label class="form-label"
+                                           for="description">Description</label>
+                                </div>
+                                <div class="form-outline mb-4">
                                     <select value="{{$tests->status}}" name="status"
                                             class="form-select mb-3">
                                         <options></options>
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
-                                </div>
-
-                                <div class="form-outline mb-4">
-                                    <textarea class="form-control" id="description"
-                                              rows="3">{{ $tests->description }}
-                                    </textarea>
-                                    <label class="form-label"
-                                           for="description">Description</label>
                                 </div>
                             </div>
                         </div>

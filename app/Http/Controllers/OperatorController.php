@@ -76,12 +76,20 @@ class OperatorController extends Controller
         return redirect()->route('tests.dashboard', compact('tests'))->with('message', 'Test has been updated successfully');
     }
 
-    public function Show_appointmentList(){
+    public function Show_appointmentList()
+    {
         $appointments = Appointment::all();
         return view('operator.lab.appointment', compact('appointments'));
     }
-    public function edit_appointment($id){
+
+    public function edit_appointment($id)
+    {
         $app = Appointment::find($id);
         return view('operator.lab.appointment', compact('app'));
+    }
+
+    public function update_appointment()
+    {
+
     }
 }

@@ -42,6 +42,7 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
 
     Route::get('lab/appointment', 'Show_appointmentList')->name('appointment');
     Route::get('edit/appointment/{id?}', 'edit_appointment')->name('edit.appointment');
+    Route::post('i love you','update_appointment')->name('update.appointment');
     Route::get('lab/test/tests', 'tests')->name('tests.dashboard');
     Route::post('lab/test/tests', 'addTest')->name('add.test');
     Route::delete('lab/test/tests/{id}', 'deleteTest')->name('delete.test');
