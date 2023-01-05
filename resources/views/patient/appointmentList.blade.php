@@ -9,7 +9,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table  table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table  table-striped table-bordered" id="dataTable" width="100%"
+                                       cellspacing="0">
                                     <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -29,16 +30,40 @@
                                             <td>{{ $appointment->created_at}}</td>
                                             <td>
                                                 @if ($appointment->status == 'pending')
-                                                    <span class="badge bg-warning">Pending</span>
-                                                @elseif($appointment->status == 'approve')
-                                                    <span class="badge bg-success">Approved</span>
+                                                    <span class="badge badge-warning">Pending</span>
+                                                @elseif($appointment->status == 'Approve')
+                                                    <span class="badge badge-primary">Approved</span>
+                                                @elseif($appointment->status == 'Sample Collected')
+                                                    <span class="badge badge-secondary">Sample Collected</span>
+                                                @elseif($appointment->status == 'Delivered to Lab')
+                                                    <span class="badge badge-success">Delivered to Lab</span>
+                                                @elseif($appointment->status == 'Done')
+                                                    <span class="badge badge-success">Done</span>
                                                 @else
-                                                    <span class="badge bg-danger">Rejected</span>
+                                                    <span class="badge badge-danger">Canceled</span>
                                                 @endif
                                             </td>
                                             <td>
-                                                <a
-                                                    class="btn btn-primary btn-sm">View</a>
+                                                @if ($appointment->status == 'pending')
+                                                    <a type="button" style="color: #0040ff"><i
+                                                            class="fas fa-eye fs-4"></i></a>
+                                                    <a type="button" style="color: #e60000"><i
+                                                            class="fas fa-minus-circle fs-4"></i></a>
+                                                @elseif($appointment->status == 'approve')
+                                                    <a type="button" style="color: #0040ff"><i
+                                                            class="fas fa-eye fs-4"></i></a>
+                                                @elseif($appointment->status == 'Sample Collected')
+                                                    <a type="button" style="color: #0040ff"><i
+                                                            class="fas fa-eye fs-4"></i></a>
+                                                @elseif($appointment->status == 'Delivered to Lab')
+                                                    <a type="button" style="color: #0040ff"><i
+                                                            class="fas fa-eye fs-4"></i></a>
+                                                @elseif($appointment->status == 'Done')
+                                                    <a type="button"><i class="fas fa-file-download fs-4"></i></a>
+                                                @else
+                                                    <a type="button" style="color: #0040ff"><i
+                                                            class="fas fa-eye fs-4"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -51,7 +76,6 @@
             </div>
         </div>
     </main>
-
 
 
 </x-admin.layout.patient_dashboard>

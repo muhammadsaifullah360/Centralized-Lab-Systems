@@ -12,11 +12,9 @@
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -29,7 +27,7 @@
 
                 <a href="{{ route('operator.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple"
                    aria-current="true">
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i>Dashboard
                 </a>
 
                 <a href="{{ route('appointment') }}"
@@ -103,8 +101,10 @@
                         <!-- Avatar -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-                               id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle"
+                               id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown"
+                               aria-expanded="false">
+                                <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                                     class="rounded-circle"
                                      height="22"
                                      alt="" loading="lazy"/>
                             </a>
@@ -118,7 +118,11 @@
 </header>
 
 {{ $slot }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous"></script>
 <script src="{{ asset('js/mdb.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

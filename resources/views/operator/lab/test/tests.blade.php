@@ -118,13 +118,13 @@
                                 <div class="d-flex justify-content-center">
                                     <a class="btn-delete " style="margin-right: 20px"
                                        href="{{ route('delete.test',$test->id) }}">
-                                        <div class="fa-2x" style="color: #e60000">
-                                            <i class="fa-solid fa-trash-can"></i>
+                                        <div  style="color: #e60000">
+                                            <i class="fa-solid fa-trash-can fs-4"></i>
                                         </div>
                                     </a>
                                     <a href="{{ route('edit.test',$test->id) }}">
-                                        <div class="fa-2x" style="color: #0040ff">
-                                            <i class="fa-solid fa-edit"></i>
+                                        <div  style="color: #0040ff">
+                                            <i class="fa-solid fa-edit fs-4"></i>
                                         </div>
                                     </a>
                                 </div>

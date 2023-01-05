@@ -84,11 +84,11 @@
             <div class="card ">
                 <div class="card-body">
                     <form method="GET">
-                        <div class="text-center mb-3  fw-bold " style="font-family: Poppins, Sans-serif, serif;
+                        <div class="text-center mb-3  fw-bold" style="font-family: Poppins, Sans-serif, serif;
                         font-size: 40px;
                         font-weight: 700;
                         color: #ff7200;
-                        text-decoration:underline ;">
+                        text-decoration:underline ">
                             <label for="name">Search</label>
                         </div>
 
@@ -98,21 +98,11 @@
                             <label for="search" class="form-label">Search here...</label>
                             <div class="invalid-feedback"></div>
                         </div>
-
-                        {{--                        <div class="form-outline mb-4">--}}
-                        {{--                            <label for="inputState"></label><select id="inputState" name="search"--}}
-                        {{--                                                                    class="form-select mb-3" required>--}}
-                        {{--                                @foreach($tests as $test)--}}
-                        {{--                                    <option--}}
-                        {{--                                        value="{{ $test->id }}"> {{ $test->name }} </option>--}}
-                        {{--                                @endforeach--}}
-                        {{--                            </select>--}}
-                        {{--                        </div>--}}
-
-                        <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong rounded-pill">Search
+                        <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong " onclick="showDiv()">
+                            Search
                         </button>
                         <div class="form-outline mt-3">
-                            <label class="form-label"><i class="fa  fa-exclamation-circle"></i>
+                            <label class="form-label"><i class="fa fa-exclamation-circle"></i>
                                 <a>Help</a>
                             </label>
                         </div>
@@ -122,14 +112,14 @@
         </div>
     </div>
 </div>
-<div class="container mt-5 mb-10 animate__animated animate__fadeInDown " id="sign-in">
-    <div class="row g-0">
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    <table class="table align-middle mb-0 bg-white">
+<div class="container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
+    <div class="row g-0 d-flex justify-content-center ">
+        <div class="col-10">
+            <div class="row ">
+                <div class="col ">
+                    <table class="table align-middle mb-0 bg-white rounded-2">
                         <thead class="bg-light ">
-                        <tr class="table-dark">
+                        <tr class="table-dark ">
                             <th>Lab</th>
                             <th>Test Name</th>
                             <th>Price</th>
@@ -308,7 +298,7 @@
 <script src="{{ asset('js/index.js') }}"></script>
 <script>
     function showDiv() {
-        document.getElementById('sign-in').style.display = "block";
+        document.getElementById('sign-in').style.display = "d-block";
         document.getElementById('sign-in').reset();
     }
 </script>

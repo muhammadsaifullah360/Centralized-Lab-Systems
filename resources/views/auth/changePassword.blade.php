@@ -19,7 +19,7 @@
                             <div class="form-outline mb-4">
                                 <input name="old_password" type="password" id="old_password" class="form-control
                                        @error('password') is-invalid @enderror" required
-                                       autocomplete="current-password"/>
+                                       />
                                 @error('password')
                                 <p class="invalid-feedback">
                                     Please enter the password!
@@ -30,7 +30,7 @@
                             <div class="form-outline mb-4">
                                 <input name="new_password" type="password" id="password" class="form-control
                                        @error('password') is-invalid @enderror" required
-                                       autocomplete="current-password"/>
+                                     />
                                 @error('password')
                                 <p class="invalid-feedback">
                                     Please enter the password!
@@ -42,7 +42,7 @@
                             <div class="form-outline mb-4">
                                 <input name="new_password_confirmation" type="password" id="password" class="form-control
                                        @error('password') is-invalid @enderror" required
-                                       autocomplete="current-password"/>
+                                       />
                                 @error('password')
                                 <p class="invalid-feedback">
                                     Please enter the password!

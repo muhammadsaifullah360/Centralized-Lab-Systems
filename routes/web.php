@@ -14,10 +14,9 @@ Route::redirect('/', 'home');
 
 Auth::routes();
 
-//Route::view('password/reset', 'auth.passwords.reset')->name('password.request');
-
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 
@@ -42,13 +41,14 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
 
     Route::get('lab/appointment', 'Show_appointmentList')->name('appointment');
     Route::get('edit/appointment/{id?}', 'edit_appointment')->name('edit.appointment');
-    Route::post('i love you','update_appointment')->name('update.appointment');
+    Route::post('update/appointment/{id?}', 'update_appointment')->name('update.appointment');
     Route::get('lab/test/tests', 'tests')->name('tests.dashboard');
     Route::post('lab/test/tests', 'addTest')->name('add.test');
     Route::delete('lab/test/tests/{id}', 'deleteTest')->name('delete.test');
     Route::get('lab/about', 'about')->name('about.dashboard');
     Route::get('lab/test/{id}/edit', 'editTest')->name('edit.test');
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
+    Route::get('upload/report/{id}','uploadReport')->name('upload.report');
 });
 
 Route::middleware(['auth'])->controller(PatientController::class)->group(function () {

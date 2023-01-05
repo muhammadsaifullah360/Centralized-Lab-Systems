@@ -16,7 +16,7 @@
                     </div>
                     <button type="button" class="btn btn-success" data-mdb-toggle="modal"
                             data-mdb-target="#exampleModal">
-                        <i class="fa-solid fa-user-plus fa-2x"></i>
+                        <i class="fa-solid fa-user-plus fs-4"></i>
                     </button>
                 </div>
             </div>
@@ -67,13 +67,13 @@
                                         <td>
                                             <div class="d-flex justify-content-between">
                                                 <a class="btn-delete" href="{{ route('delete.users',$user->id) }}">
-                                                    <div class="fa-2x" style="color: #e60000">
-                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    <div style="color: #e60000">
+                                                        <i class="fa-solid fa-trash-can fs-4"></i>
                                                     </div>
                                                 </a>
                                                 <a href="{{ route('edit.users',$user->id) }}">
-                                                    <div class="fa-2x" style="color: #0040ff">
-                                                        <i class="fa-solid fa-user-pen"></i>
+                                                    <div style="color: #0040ff">
+                                                        <i class="fa-solid fa-user-pen fs-4"></i>
                                                     </div>
                                                 </a>
                                             </div>

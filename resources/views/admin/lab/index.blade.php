@@ -135,13 +135,13 @@
                                 <td>
                                     <div class="d-flex justify-content-between">
                                         <a class="btn-delete" href="{{ route('delete.lab',$lab->id) }}">
-                                            <div class="fa-2x" style="color: #e60000">
-                                                <i class="fa-solid fa-trash-can"></i>
+                                            <div  style="color: #e60000">
+                                                <i class="fa-solid fa-trash-can fs-4"></i>
                                             </div>
                                         </a>
                                         <a href="{{ route('edit.labs',$lab->id) }}">
-                                            <div class="fa-2x" style="color: #0040ff">
-                                                <i class="fa-solid fa-user-pen"></i>
+                                            <div  style="color: #0040ff">
+                                                <i class="fa-solid fa-user-pen fs-4"></i>
                                             </div>
                                         </a>
                                     </div>

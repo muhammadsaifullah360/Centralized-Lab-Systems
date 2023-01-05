@@ -88,8 +88,18 @@ class OperatorController extends Controller
         return view('operator.lab.appointment', compact('app'));
     }
 
-    public function update_appointment()
+    public function update_appointment(Request $request, $id)
     {
-
+        $request->validate([
+            'status' => 'required',
+        ]);
+        $app = Appointment::find($id);
+        $app->update($request->all());
+        return redirect()->route('appointment', compact('app'))->with('message', 'Appointment status has been updated successfully');
+    }
+    public function uploadReport($id)
+    {
+        $app = Appointment::find($id);
+        return view('operator.lab.report',compact('app'));
     }
 }
