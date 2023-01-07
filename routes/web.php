@@ -6,6 +6,7 @@ use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::get('lab/test/{id}/edit', 'editTest')->name('edit.test');
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
     Route::get('upload/report/{id}','uploadReport')->name('upload.report');
+    Route::post('upload/report','upload')->name('upload');
+
 });
 
 Route::middleware(['auth'])->controller(PatientController::class)->group(function () {
@@ -68,6 +71,6 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::post('patient/test', 'addtest')->name('store.test');
 });
 
-Route::any('dd', function () {
+Route::any('dd', function (Request $request) {
 
 })->name('dd');

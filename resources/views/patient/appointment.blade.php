@@ -13,7 +13,7 @@
                             <div class="card-header">
                                 <div class="row justify-content-center">
                                     <div class="col-9">
-                                        <div class="justify-content-center mb-4"><h3 class="">Add
+                                        <div class="justify-content-center mb-4"><h3 class="note note-success">Add
                                                 Appoinment</h3></div>
                                         <div class="form-outline mb-4">
                                             <input type="text" class="form-control" name="test"

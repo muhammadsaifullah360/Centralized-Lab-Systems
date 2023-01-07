@@ -2,10 +2,11 @@
     <x-slot name="title">Appointment List</x-slot>
     <main style="margin-top: 58px">
         <div class="container pt-4">
+            <h3 class="note note-success">  All Appointments</h3>
             <div class="row">
                 <div class="col-xl-12 col-md-12 mb-4">
                     @if($message = session('message'))
-                        <div class="note note-success mb-4 animate__animated animate__fadeInDown">
+                        <div class="note note-success mb-4 animate_animated animate__bounceIn">
                             {{ $message }}
                         </div>
                     @endif

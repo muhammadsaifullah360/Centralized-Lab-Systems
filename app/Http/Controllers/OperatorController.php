@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Report;
 use App\Models\Test;
 use Illuminate\Http\Request;
 
@@ -97,9 +98,26 @@ class OperatorController extends Controller
         $app->update($request->all());
         return redirect()->route('appointment', compact('app'))->with('message', 'Appointment status has been updated successfully');
     }
+
     public function uploadReport($id)
     {
         $app = Appointment::find($id);
-        return view('operator.lab.report',compact('app'));
+        $report_id = rand(0,1000000000);
+        return view('operator.lab.report', compact('app','report_id'));
     }
+
+    public function upload(Request $request)
+    {
+        dd($request->validate([
+            'name'=> 'required',
+            'normal_value'=> 'required',
+//            'resulted_value'=> 'required',
+            'report_id'=> 'required',
+//            'remarks'=> 'required',
+
+        ]));
+        Report::create($request->all());
+        return redirect()->route('appointment');
+    }
+
 }
