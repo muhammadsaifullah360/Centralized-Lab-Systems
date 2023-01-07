@@ -69,7 +69,7 @@
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
                                         <div class="align-self-center">
-                                            <h2 class="h1 mb-0 me-4">$36</h2>
+                                            <h2 class="h1 mb-0 me-4">0{{$done}}</h2>
                                         </div>
                                         <div>
                                             <h4 class="mb-0">Finished Test</h4>

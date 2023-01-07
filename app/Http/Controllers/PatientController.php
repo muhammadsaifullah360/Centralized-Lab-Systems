@@ -16,7 +16,8 @@ class PatientController extends Controller
         $TotalAppointments = Appointment::count();
         $pending = Appointment::where('status', 'pending')->count();
         $approved = Appointment::where('status', 'approve')->count();
-        return view('patient.dashboard', compact('TotalAppointments', 'pending', 'approved'));
+        $done = Appointment::where('status','Done')->count();
+        return view('patient.dashboard', compact('TotalAppointments', 'pending', 'approved','done'));
     }
 
 
