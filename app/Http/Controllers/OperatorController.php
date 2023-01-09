@@ -13,8 +13,12 @@ class OperatorController extends Controller
 
     public function index()
     {
+        $totalAppointments = Appointment::count();
+        $pending = Appointment::where('status', 'pending')->count();
+        $approved = Appointment::where('status', 'approve')->count();
+        $done = Appointment::where('status', 'Done')->count();
         $totalTests = Test::where('lab_id', auth()->user()->lab()->get()->first()->id)->count();
-        return view('operator.dashboard', compact('totalTests',));
+        return view('operator.dashboard', compact('totalTests','totalAppointments','pending','approved','done'));
     }
 
     public function appointmentList()
@@ -79,6 +83,7 @@ class OperatorController extends Controller
 
     public function Show_appointmentList()
     {
+
         $appointments = Appointment::all();
         return view('operator.lab.appointment', compact('appointments'));
     }
@@ -93,6 +98,7 @@ class OperatorController extends Controller
     {
         $request->validate([
             'status' => 'required',
+            'remark' => 'required'
         ]);
         $app = Appointment::find($id);
         $app->update($request->all());
@@ -102,22 +108,22 @@ class OperatorController extends Controller
     public function uploadReport($id)
     {
         $app = Appointment::find($id);
-        $report_id = rand(0,1000000000);
-        return view('operator.lab.report', compact('app','report_id'));
+        $report_id = rand(0, 1000000000);
+        $get_detail = Report::find($id);
+        return view('operator.lab.report', compact('app', 'report_id', 'get_detail'));
     }
 
     public function upload(Request $request)
     {
-        dd($request->validate([
-            'name'=> 'required',
-            'normal_value'=> 'required',
-//            'resulted_value'=> 'required',
-            'report_id'=> 'required',
-//            'remarks'=> 'required',
+        $request->validate([
+            'name' => 'required',
+            'normal_value' => 'required',
+            'resulted_value' => 'required',
+            'report_id' => 'required',
+            'remarks' => 'required',
 
-        ]));
+        ]);
         Report::create($request->all());
         return redirect()->route('appointment');
     }
-
 }

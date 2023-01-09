@@ -33,6 +33,7 @@
                                                    value="{{ $user->phone ?? '' }}"
                                                    class="form-control" required/>
                                             <input name="user_id" value="{{ $user->id ?? ''}}" hidden></input>
+                                            <input name="lab_id" value="{{ $lab->id ?? ''}}" hidden></input>
                                             <label class="form-label" for="form1Example1">Contact Number</label>
                                         </div>
 
@@ -42,7 +43,6 @@
                                             <label class="form-label"
                                                    for="address">Address</label>
                                         </div>
-
                                         <div>
                                             <a href="{{route('home')}}" class="btn btn-secondary">
                                                 Close

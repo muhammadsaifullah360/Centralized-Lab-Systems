@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table  table-striped table-bordered" id="dataTable" width="100%"
+                                <table id="myTable" class="table  table-striped table-bordered" id="dataTable" width="100%"
                                        cellspacing="0">
                                     <thead class="table-dark">
                                     <tr>
@@ -29,7 +29,7 @@
                                             <td>{{ $appointment->phone }}</td>
                                             <td>{{ $appointment->created_at}}</td>
                                             <td>
-                                                @if ($appointment->status == 'pending')
+                                                @if ($appointment->status == 'Pending')
                                                     <span class="badge badge-warning">Pending</span>
                                                 @elseif($appointment->status == 'Approve')
                                                     <span class="badge badge-primary">Approved</span>
@@ -39,7 +39,7 @@
                                                     <span class="badge badge-success">Delivered to Lab</span>
                                                 @elseif($appointment->status == 'Done')
                                                     <span class="badge badge-success">Done</span>
-                                                @else
+                                                @elseif($appointment->status == 'Canceled')
                                                     <span class="badge badge-danger">Canceled</span>
                                                 @endif
                                             </td>

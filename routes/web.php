@@ -35,6 +35,9 @@ Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->p
     Route::put('user/edit/{id}', 'updateUser')->name('update.users');
     Route::delete('users/{id}', 'deleteUser')->name('delete.users');
     Route::post('lab/users', 'storeUser')->name('user.store');
+
+    Route::get('registered_User', 'registeredUser')->name('registeredUser');
+
 });
 
 Route::middleware(['auth', 'role:operator'])->controller(OperatorController::class)->prefix('operator')->group(function () {
@@ -49,8 +52,8 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::get('lab/about', 'about')->name('about.dashboard');
     Route::get('lab/test/{id}/edit', 'editTest')->name('edit.test');
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
-    Route::get('upload/report/{id}','uploadReport')->name('upload.report');
-    Route::post('upload/report','upload')->name('upload');
+    Route::get('upload/report/{id}', 'uploadReport')->name('upload.report');
+    Route::post('upload/report', 'upload')->name('upload');
 
 });
 
@@ -65,6 +68,10 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::get('auth/changePassword', 'changePassword')->name('change');
     Route::post('/auth/changePassword', 'updatePassword')->name('update-password');
 
+    Route::get('test/reports', 'test_report')->name('report');
+
+
+
 
     ////for testing purpose
     Route::get('patient/test', 'test')->name('test');
@@ -72,5 +79,5 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
 });
 
 Route::any('dd', function (Request $request) {
-
+//    dd($lab = Lab::find($id));
 })->name('dd');

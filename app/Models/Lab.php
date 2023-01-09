@@ -27,4 +27,8 @@ class Lab extends Model
     {
         return $this->hasMany(Test::class);
     }
+    public function appoitnments()
+    {
+        return $this->hasOne(Appointment::class);
+    }
 }

@@ -21,17 +21,19 @@
                                         </div>
                                         <div class="form-outline mb-4">
                                             <input name="name" type="text" class="form-control"
-                                                   value="{{ $app->test }}"
+                                                   value="{{ $app->test ?? '' }}"
                                                    readonly required/>
                                             <label class="form-label" for="name">Test Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
-                                        <div name="normal_value" class="form-outline mb-4">
-                                            <input type="text" class="form-control"/>
+                                        <div class="form-outline mb-4">
+                                            <input name="normal_value" value="{{ $get_detail->normal_value }}"
+                                                   type="text" class="form-control"/>
                                             <label class="form-label " for="form1Example1">Normal Value</label>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input name="resulted_value" type="text" class="form-control"/>
+                                            <input name="resulted_value" value="{{ $get_detail->resulted_value }}"
+                                                   type="text" class="form-control"/>
                                             <label class="form-label" for="form1Example1">Resulted Value</label>
                                         </div>
                                     </div>
@@ -42,9 +44,9 @@
                                                    class="form-control" required/>
                                             <label class="form-label" for="form1Example1">Patient Name</label>
                                         </div>
-                                        <div name="remarks" class="form-outline mb-4">
-                                                <textarea class="form-control" id="textAreaExample"
-                                                          rows="3"></textarea>
+                                        <div class="form-outline mb-4">
+                                                <textarea name="remarks" class="form-control" id="textAreaExample"
+                                                          rows="3">{{ $get_detail->remarks ?? '' }}</textarea>
                                             <label class="form-label"
                                                    for="address">Remarks</label>
                                         </div>

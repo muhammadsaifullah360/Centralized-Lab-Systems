@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Fortest;
+use App\Models\Lab;
 use App\Models\Test;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,12 +25,14 @@ class PatientController extends Controller
     public function book($id = 0)
     {
         $user = auth()->user();
+        $lab = Lab::find($id);
         if ($test = Test::find($id)) {
-            return view('patient.appointment', compact('test', 'user'));
+            return view('patient.appointment', compact('test', 'user','lab'));
         }
         return view('patient.appointment');
 
     }
+    //get lab id while book appointment
 
     public function store(Request $request)
     {
@@ -39,6 +42,7 @@ class PatientController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'user_id' => 'required',
+            'lab_id' => 'required',
         ]);
 
         Appointment::create($request->all());
@@ -89,6 +93,12 @@ class PatientController extends Controller
     }
 
 
+    public function test_report()
+    {
+
+        $appointments = Appointment::where('status','Done')->get();
+        return view('patient.results', compact( 'appointments'));
+    }
     /////for testing purpose
     public function addtest(Request $request)
     {

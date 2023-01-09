@@ -34,10 +34,6 @@
                    class="list-group-item list-group-item-action py-2 ripple"><i
                         class="fas fa-users fa-fw me-3"></i><span>Appointment List</span></a>
 
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
-                    <i class="fa-solid fa-user-plus me-3"></i><span>Registered Users</span>
-                </a>
-
                 <a href="{{ route('tests.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple ">
                     <i class="fas fa-list fa-fw me-3"></i><span>Test List</span>
                 </a>

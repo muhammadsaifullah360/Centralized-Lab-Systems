@@ -15,7 +15,9 @@ class Appointment extends Model
         'address',
         'phone',
         'status',
+        'remark',
         'user_id',
+        'lab_id',
     ];
 
     public function user()
@@ -23,4 +25,12 @@ class Appointment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function report()
+    {
+        return $this->hasOne(Report::class);
+    }
+    public function lab()
+    {
+        return $this->belongsTo(Lab::class);
+    }
 }

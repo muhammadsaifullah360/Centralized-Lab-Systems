@@ -17,4 +17,8 @@ class Report extends Model
         'remarks',
         'user_id'
     ];
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class);
+    }
 }

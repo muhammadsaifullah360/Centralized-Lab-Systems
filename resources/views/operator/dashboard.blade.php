@@ -27,7 +27,7 @@
                                         <i class="fa-regular fa-calendar-check fa-3x text-success"></i>
                                     </div>
                                     <div class="text-end">
-                                        <h3>156</h3>
+                                        <h3>{{$totalAppointments}}</h3>
                                         <p class="mb-0">Booked Appointment</p>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                         <i class="fa-regular fa-calendar-check fa-3x text-warning"></i>
                                     </div>
                                     <div class="text-end">
-                                        <h3>04</h3>
+                                        <h3>{{ $pending }}</h3>
                                         <p class="mb-0"> Pending Appointment</p>
                                     </div>
                                 </div>
@@ -56,9 +56,10 @@
                                     <div class="align-self-center">
                                         <i class="fa-regular fa-thumbs-up fa-3x text-primary"></i>
                                     </div>
+                                    
                                     <div class="text-end">
-                                        <h3>08</h3>
-                                        <p class="mb-0">Approved Appointment</p>
+                                        <h3>{{ $done }}</h3>
+                                        <p class="mb-0">Done Appointment</p>
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +70,7 @@
 
             <section>
                 <style>
-                    .card{
+                    .card {
                         background-color: #E9E9E9;
                     }
                 </style>

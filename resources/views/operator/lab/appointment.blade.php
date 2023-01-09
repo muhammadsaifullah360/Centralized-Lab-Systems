@@ -2,7 +2,7 @@
     <x-slot name="title">Appointment List</x-slot>
     <main style="margin-top: 58px">
         <div class="container pt-4">
-            <h3 class="note note-success">  All Appointments</h3>
+            <h3 class="note note-success"> All Appointments</h3>
             <div class="row">
                 <div class="col-xl-12 col-md-12 mb-4">
                     @if($message = session('message'))
@@ -12,8 +12,17 @@
                     @endif
                     <div class="card">
                         <div class="card-body">
+                            <div class="input-group rounded d-flex flex-md-row mt-2 mb-4">
+                                <input type="search" id="myInput" onkeyup="myFunction() " name="search"
+                                       class="form-control rounded"
+                                       placeholder="search appointment..."
+                                       aria-label="Search"
+                                       aria-describedby="search-addon"/>
+                                <span class="input-group-text border-0" id="search-addon"><i
+                                        class="fas fa-search"></i></span>
+                            </div>
                             <div class="table-responsive rounded-5">
-                                <table class="table table-striped table-bordered" id="dataTable">
+                                <table id="myTable" class="table table-striped table-bordered" id="dataTable">
                                     <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -32,7 +41,7 @@
                                             <td>{{ $appointment->phone }}</td>
                                             <td>{{ $appointment->created_at}}</td>
                                             <td>
-                                                @if ($appointment->status == 'pending')
+                                                @if ($appointment->status == 'Pending')
                                                     <span class="badge badge-warning">Pending</span>
                                                 @elseif($appointment->status == 'Approve')
                                                     <span class="badge badge-primary">Approved</span>
@@ -42,7 +51,7 @@
                                                     <span class="badge badge-success">Delivered to Lab</span>
                                                 @elseif($appointment->status == 'Done')
                                                     <span class="badge badge-success">Done</span>
-                                                @else
+                                                @elseif($appointment->status == 'Canceled')
                                                     <span class="badge badge-danger">Canceled</span>
                                                 @endif
                                             </td>
@@ -55,12 +64,11 @@
                                                 @if( $appointment->status == 'Done')
                                                     <a href="{{ route('upload.report' , $appointment->id) }}"
                                                        type="button">
-                                                        <i class="fas fa-file-upload fs-4"></i>
+                                                        <i class="fas fa-file-upload fs-4" style="color: #686b6a"></i>
                                                     </a>
                                                 @endif
                                             </td>
                                         </tr>
-
                                         <form method="POST">
                                             @csrf
                                             <div class="modal fade" data-mdb-backdrop="static" data-mdb-keyboard="false"
@@ -120,9 +128,10 @@
                                                                             <div class="invalid-feedback"></div>
                                                                         </div>
                                                                         <div class="form-outline mb-2">
-                                                                                <textarea type="text" name="name"
+                                                                                <textarea name="remark" type="text"
                                                                                           class="form-control"
-                                                                                          id="name" required></textarea>
+                                                                                          id="name"
+                                                                                          required>{{ $appointment->remark }}</textarea>
                                                                             <label for="name"
                                                                                    class="form-label">Remarks</label>
                                                                             <div class="invalid-feedback"></div>
@@ -170,5 +179,25 @@
             </div>
         </div>
     </main>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </x-admin.layout.operator_dashboard>
 

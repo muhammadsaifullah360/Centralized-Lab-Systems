@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $tests = Test::all();
+        $tests = Test::where('status','Active')->get();
         if ($request->has('search')) {
             $search = str($request->get('search'))->trim()->lower();
             $results = Test::with('lab')->where('name', 'like', '%' . $search . '%')->get();

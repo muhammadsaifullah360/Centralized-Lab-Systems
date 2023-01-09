@@ -1,0 +1,78 @@
+.ddl-select {
+    visibility:hidden;
+}
+.ddl {
+    position:relative;
+    height:50px;
+    width:100%;
+    text-align:initial;
+}
+.ddl::after {
+    content:'';
+    position:absolute;
+    top:25px;
+    right:20px;
+    width:12px;
+    height:2px;
+    background:#555;
+    z-index:99;
+    transform:rotate(-40deg);
+    transition:0.5s;
+}
+.ddl::before {
+    content:'';
+    position:absolute;
+    top:25px;
+    right:28px;
+    width:12px;
+    height:2px;
+    background:#555;
+    z-index:99;
+    transform:rotate(40deg);
+    transition:0.5s;
+}
+.ddl.active::after{
+    right:28px;
+}
+.ddl.active::before{
+    right:20px;
+}
+.ddl-input {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    cursor:pointer;
+    border-radius:10px;
+    padding:10px 20px;
+    outline:none;
+    background:#fff;
+    border:1px solid #e9e9e9;
+}
+.ddl.active .ddl-options {
+    visibility:visible;
+    opacity:1;
+}
+.ddl .ddl-options {
+    position:absolute;
+    width:100%;
+    top:55px;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    visibility:hidden;
+    opacity:0;
+    transition:0.25s;
+    z-index: 999;
+    border:1px solid #e9e9e9;
+    box-shadow: 0 0 5px rgba(0,0,0,0.10);
+}
+.ddl .ddl-options > div {
+    padding: 10px 20px;
+    cursor:pointer;
+}
+.ddl .ddl-options > div:hover {
+    background: var(--bs-primary);
+    color: #fff;
+}

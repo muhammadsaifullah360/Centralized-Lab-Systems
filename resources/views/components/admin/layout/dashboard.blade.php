@@ -33,15 +33,18 @@
                 </a>
                 <a href="{{ route('admin.lab.user.index') }}"
                    class="list-group-item list-group-item-action py-2 ripple"><i
-                        class="fas fa-users fa-fw me-3"></i><span>Labs Users</span></a>
+                        class="fas fa-users fa-fw me-3"></i><span>Labs Users</span>
+                </a>
                 <a href="{{ route('admin.lab.index') }}" class="list-group-item list-group-item-action py-2 ripple ">
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Laboratories</span>
+                </a>
+                <a href="{{ route('registeredUser') }}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa-solid fa-user-plus me-3"></i><span>Registered Users</span>
                 </a>
             </div>
         </div>
     </nav>
     <!-- Sidebar -->
-
     <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <!-- Container wrapper -->

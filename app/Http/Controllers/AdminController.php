@@ -61,8 +61,6 @@ class AdminController extends Controller
         return redirect()->route('admin.lab.index')->with('message', 'Lab has been added successfully');
     }
 
-
-
     public function editLab($id)
     {
         $users = User::orderBy('name')->pluck('name', 'id');
@@ -94,7 +92,6 @@ class AdminController extends Controller
             'phone' => 'required',
         ]);
         $data['password'] = Hash::make($data['password']);
-
         User::create($data);
         return redirect()->route('admin.lab.user.index')->with('message', 'Lab Operator has been added successfully');
     }
@@ -126,5 +123,10 @@ class AdminController extends Controller
         return redirect()->route('admin.lab.user.index')->with('message', 'User has been updated successfully');
     }
 
+    public function registeredUser()
+    {
+        $users = User::where('role', 'user')->get();
+        return view('admin.registeredUsers', compact('users'));
+    }
 
 }
