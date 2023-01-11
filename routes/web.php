@@ -6,6 +6,7 @@ use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -70,6 +71,8 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
 
     Route::get('test/reports', 'test_report')->name('report');
     Route::get('report/{id?}', 'edit_report')->name('edit.report');
+    Route::get('pdf/generate/{id?}', 'generatePDF')->name('pdf.generate');
+
 
 
 

@@ -7,6 +7,7 @@ use App\Models\Fortest;
 use App\Models\Lab;
 use App\Models\Test;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,11 +28,12 @@ class PatientController extends Controller
         $user = auth()->user();
         $lab = Lab::find($id);
         if ($test = Test::find($id)) {
-            return view('patient.appointment', compact('test', 'user','lab'));
+            return view('patient.appointment', compact('test', 'user', 'lab'));
         }
         return view('patient.appointment');
 
     }
+
     //get lab id while book appointment
 
     public function store(Request $request)
@@ -96,17 +98,22 @@ class PatientController extends Controller
     public function test_report()
     {
 
-        $appointments = Appointment::where('status','Done')->get();
+        $appointments = Appointment::where('status', 'Done')->get();
         return view('patient.test_report', compact('appointments'));
     }
 
     public function edit_report($id)
     {
         $appointment = Appointment::find($id);
-        return view('patient.edit_report', compact('appointment'));
+        return view('patient.report', compact('appointment'));
     }
 
-
+    public function generatePDF($id)
+    {
+        $appointment = Appointment::find($id);
+        $pdf = PDF::loadView('patient.report', compact('appointment'));
+        return $pdf->download('report.pdf');
+    }
 
 
     /////for testing purpose
