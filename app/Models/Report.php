@@ -15,7 +15,8 @@ class Report extends Model
         'resulted_value',
         'report_id',
         'remarks',
-        'user_id'
+        'user_id',
+        'appointment_id',
     ];
     public function appointment()
     {

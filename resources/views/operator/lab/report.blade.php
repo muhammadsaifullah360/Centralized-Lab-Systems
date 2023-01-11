@@ -15,7 +15,7 @@
 
                                         <div class="form-outline mb-4">
                                             <input name="report_id" type="text" class="form-control"
-                                                   value="{{ $report_id }}" readonly
+                                                   value="{{ $report_id ?? ''}}" readonly
                                                    required/>
                                             <label class="form-label" for="form1Example1">Report ID</label>
                                         </div>
@@ -23,24 +23,30 @@
                                             <input name="name" type="text" class="form-control"
                                                    value="{{ $app->test ?? '' }}"
                                                    readonly required/>
+                                            <input name="appointment_id" type="text" class="form-control"
+                                                   value="{{ $app->id ?? '' }}"
+                                                   hidden required/>
                                             <label class="form-label" for="name">Test Name</label>
                                             <div class="valid-feedback">Looks good!</div>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input name="normal_value" value="{{ $get_detail->normal_value }}"
+                                            <input name="normal_value" value="{{ $get_detail->normal_value ?? '' }}"
                                                    type="text" class="form-control"/>
                                             <label class="form-label " for="form1Example1">Normal Value</label>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input name="resulted_value" value="{{ $get_detail->resulted_value }}"
+                                            <input name="resulted_value" value="{{ $get_detail->resulted_value ?? ''}}"
                                                    type="text" class="form-control"/>
                                             <label class="form-label" for="form1Example1">Resulted Value</label>
                                         </div>
                                     </div>
                                     <div class="col">
+                                        <input name="user_id" type="text" id="numberField"
+                                               value="{{ $app->user_id ?? '' }}"
+                                               class="form-control" required hidden=""/>
                                         <div class="form-outline mb-4">
-                                            <input name="user_id" type="text" id="numberField"
-                                                   value="{{ $app->user_id ?? '' }}"
+                                            <input type="text"
+                                                   value="{{ $app->user->name ?? '' }}"
                                                    class="form-control" required/>
                                             <label class="form-label" for="form1Example1">Patient Name</label>
                                         </div>

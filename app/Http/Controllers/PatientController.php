@@ -97,8 +97,18 @@ class PatientController extends Controller
     {
 
         $appointments = Appointment::where('status','Done')->get();
-        return view('patient.results', compact( 'appointments'));
+        return view('patient.test_report', compact('appointments'));
     }
+
+    public function edit_report($id)
+    {
+        $appointment = Appointment::find($id);
+        return view('patient.edit_report', compact('appointment'));
+    }
+
+
+
+
     /////for testing purpose
     public function addtest(Request $request)
     {

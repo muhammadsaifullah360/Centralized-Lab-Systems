@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('remarks');
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('appointment_id')->constrained()->onDelete('cascade');
         });
     }
 

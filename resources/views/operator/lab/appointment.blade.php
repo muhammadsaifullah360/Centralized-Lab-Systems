@@ -61,7 +61,7 @@
                                                    data-mdb-target="#modal-{{ $appointment->id }}">
                                                     <i class="fas fa-eye fs-4"></i>
                                                 </a>
-                                                @if( $appointment->status == 'Done')
+                                                 @if( $appointment->status == 'Done')
                                                     <a href="{{ route('upload.report' , $appointment->id) }}"
                                                        type="button">
                                                         <i class="fas fa-file-upload fs-4" style="color: #686b6a"></i>

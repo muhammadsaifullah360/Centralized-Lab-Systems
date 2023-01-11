@@ -69,6 +69,8 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::post('/auth/changePassword', 'updatePassword')->name('update-password');
 
     Route::get('test/reports', 'test_report')->name('report');
+    Route::get('report/{id?}', 'edit_report')->name('edit.report');
+
 
 
 
