@@ -6,7 +6,6 @@ use App\Http\Controllers\LabController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ReportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,9 +46,9 @@ Route::middleware(['auth', 'role:operator'])->controller(OperatorController::cla
     Route::get('lab/appointment', 'Show_appointmentList')->name('appointment');
     Route::get('edit/appointment/{id?}', 'edit_appointment')->name('edit.appointment');
     Route::post('update/appointment/{id?}', 'update_appointment')->name('update.appointment');
-    Route::get('lab/test/tests', 'tests')->name('tests.dashboard');
-    Route::post('lab/test/tests', 'addTest')->name('add.test');
-    Route::delete('lab/test/tests/{id}', 'deleteTest')->name('delete.test');
+    Route::get('lab/tests', 'tests')->name('tests.dashboard');
+    Route::post('lab/tests', 'addTest')->name('add.test');
+    Route::delete('lab/test/{id}', 'deleteTest')->name('delete.test');
     Route::get('lab/about', 'about')->name('about.dashboard');
     Route::get('lab/test/{id}/edit', 'editTest')->name('edit.test');
     Route::put('lab/test/edit/{id}', 'updateTest')->name('update.test');
@@ -62,7 +61,10 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::get('patient/dashboard', 'index')->name('patient.dashboard');
     Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
     Route::post('book/test', 'store')->name('appointment.store');
+    Route::delete('appointment/{id}', 'delete_appointment')->name('appointment.delete');
     Route::get('all-appointments', 'appointmentList')->name('appointment.list');
+    Route::get('view/appointment/{id?}', 'view_appointment')->name('view.appointment');
+
 
     Route::get('patient/payment/checkout', 'payment')->name('payment.form');
 
@@ -72,10 +74,6 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::get('test/reports', 'test_report')->name('report');
     Route::get('report/{id?}', 'edit_report')->name('edit.report');
     Route::get('pdf/generate/{id?}', 'generatePDF')->name('pdf.generate');
-
-
-
-
 
 
     ////for testing purpose

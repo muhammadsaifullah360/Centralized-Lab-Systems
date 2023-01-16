@@ -1,15 +1,28 @@
 <x-admin.layout.patient_dashboard>
-
     <main style="margin-top: 58px">
         <div class="container pt-4">
             <div class="row">
+                <div class="d-flex justify-content-end mb-5">
+                    <a style="margin-right: 6px"
+                    href="{{ route('pdf.generate') }}" type="submit" class="btn btn-primary">Download
+                    </a>
+                    <a href="{{ route('report') }}" type="button" class="btn btn-danger"
+                    >Close
+                    </a>
+                </div>
                 <form>
                     @csrf
-                    <div class="page" size="A4">
+                    <div class="page mb-4" size="A4">
                         <div class="p-5">
                             <section class="top-content bb d-flex justify-content-between">
-                                <div class="logo">
-                                    <h2 style="color: #dc4c64">{{ $appointment->lab->name }}</h2>
+                                <div class="logo d-flex justify-content-center">
+                                    <img
+                                        src="{{asset('images/'.$appointment->lab->profile_image)}}"
+                                        class="rounded-circle"
+                                        alt=""
+                                        style="width: 45px; height: 45px"
+                                    />
+                                    <h2 class="fs-bold" style="color: #e92428">{{ $appointment->lab->name }}</h2>
                                 </div>
                                 <div class="top-left">
                                     <div class="graphic-path">
@@ -32,13 +45,12 @@
                                         </div>
 
                                     </div>
-                                    <div class="row extra-info pt-3">
+                                    <div class="row extra-info pt-3 ">
                                         <div class="col-7">
-                                            <p>Payment Method: <span>bKash</span></p>
-                                            <p>Order Number: <span>#868</span></p>
+                                            <p>Payment Method: <span>COD</span></p>
                                         </div>
                                         <div class="col-5">
-                                            <p>Date: <span>10-04.2021</span></p>
+                                            <p>Date: <span>{{ date('d-m-Y') }}</span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -94,20 +106,9 @@
                                 </div>
                             </footer>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ route('report') }}" type="button" class="btn btn-danger"
-                        >Close
-                        </a>
-                        <a
-                            href="{{ route('pdf.generate') }}" type="submit" class="btn btn-primary">Download
-                        </a>
-                    </div>
-
+                    </div >
                 </form>
             </div>
         </div>
     </main>
-
-
 </x-admin.layout.patient_dashboard>

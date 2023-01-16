@@ -93,7 +93,7 @@
                                                                     <div class="col">
                                                                         <div class="form-outline mb-4">
                                                                             <input type="text" name="test" id="name"
-                                                                                   value="{{ $appointment->test }}"
+                                                                                   value="{{ $appointment->test ?? ''}}"
                                                                                    class="form-control"
                                                                                    required/>
                                                                             <label for="name" class="form-label">Test
@@ -102,7 +102,7 @@
                                                                         </div>
                                                                         <div class="form-outline mb-4">
                                                                             <input type="text" name=""
-                                                                                   value="{{ $appointment->user->name }}"
+                                                                                   value="{{ $appointment->user->name ?? '' }}"
                                                                                    class="form-control"
                                                                                    id="name" required/>
                                                                             <label for="name" class="form-label">Patient
@@ -111,7 +111,7 @@
                                                                         </div>
                                                                         <div class="form-outline mb-4">
                                                                             <input type="text" name="phone"
-                                                                                   value="{{ $appointment->phone }}"
+                                                                                   value="{{ $appointment->phone  ?? ''}}"
                                                                                    class="form-control"
                                                                                    id="name" required/>
                                                                             <label for="name" class="form-label">Phone
@@ -122,7 +122,7 @@
                                                                             <textarea type="text" name="address"
                                                                                       class="form-control"
                                                                                       id="name"
-                                                                                      required>{{ $appointment->address }}</textarea>
+                                                                                      required>{{ $appointment->address ?? ''}}</textarea>
                                                                             <label for="name"
                                                                                    class="form-label">Address</label>
                                                                             <div class="invalid-feedback"></div>
@@ -131,7 +131,7 @@
                                                                                 <textarea name="remark" type="text"
                                                                                           class="form-control"
                                                                                           id="name"
-                                                                                          required>{{ $appointment->remark }}</textarea>
+                                                                                          required>{{ $appointment->remark ?? '' }}</textarea>
                                                                             <label for="name"
                                                                                    class="form-label">Remarks</label>
                                                                             <div class="invalid-feedback"></div>

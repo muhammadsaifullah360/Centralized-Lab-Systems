@@ -9,8 +9,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="myTable" class="table  table-striped table-bordered" id="dataTable" width="100%"
-                                       cellspacing="0">
+                                <table id="myTable" class="table  table-striped table-bordered">
                                     <thead class="table-dark">
                                     <tr>
                                         <th>#</th>
@@ -44,12 +43,17 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($appointment->status == 'pending')
-                                                    <a type="button" style="color: #0040ff"><i
+                                                @if ($appointment->status == 'Pending')
+                                                    <a href="{{ route('view.appointment',$appointment->id) }}"
+                                                       type="button" data-mdb-toggle="modal"
+                                                       data-mdb-target="#exampleModal{{$appointment->id}}"
+                                                       style="color: #0040ff"><i
                                                             class="fas fa-eye fs-4"></i></a>
-                                                    <a type="button" style="color: #e60000"><i
+                                                    <a class="btn-delete"
+                                                       href="{{ route('appointment.delete',$appointment->id)}}"
+                                                       style="color: #e60000"><i
                                                             class="fas fa-minus-circle fs-4"></i></a>
-                                                @elseif($appointment->status == 'approve')
+                                                @elseif($appointment->status == 'Approve')
                                                     <a type="button" style="color: #0040ff"><i
                                                             class="fas fa-eye fs-4"></i></a>
                                                 @elseif($appointment->status == 'Sample Collected')
@@ -61,21 +65,75 @@
                                                 @elseif($appointment->status == 'Done')
                                                     <a type="button"><i class="fas fa-file-download fs-4"></i></a>
                                                 @else
-                                                    <a type="button" style="color: #0040ff"><i
+                                                    <a type="button" data-mdb-toggle="modal"
+                                                       data-mdb-target="#exampleModal" style="color: #0040ff"><i
                                                             class="fas fa-eye fs-4"></i></a>
                                                 @endif
                                             </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
+                                    <form id="form-delete" method="POST" style="display: none">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </table>
                             </div>
+
                         </div>
+                        <!-- Modal -->
+                        <form method="POST">
+                            <div class="modal fade" data-mdb-backdrop="static" data-mdb-keyboard="false"
+                                 id="exampleModal{{$appointment->id}}"
+                                 tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                @csrf
+                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <div class="text-center"><h5 class="modal-title" id="exampleModalLabel">
+                                                    Details</h5></div>
+                                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row justify-content-center">
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-outline mb-4">
+                                                            <input type="text"  class="form-control"
+                                                                   id="name" value="{{ $appointment->test }}" readonly/>
+                                                            <label for="name" class="form-label">Test Name</label>
+                                                        </div>
+                                                        <div class="form-outline mb-2">
+                                                                                <textarea name="remark" type="text"
+                                                                                          class="form-control"
+                                                                                          id="name"
+                                                                                          required>{{ $appointment->remark ?? '' }}</textarea>
+                                                            <label for="name"
+                                                                   class="form-label">Remarks</label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-mdb-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-
 
 </x-admin.layout.patient_dashboard>

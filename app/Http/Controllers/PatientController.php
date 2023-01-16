@@ -49,7 +49,7 @@ class PatientController extends Controller
 
         Appointment::create($request->all());
 
-        return redirect()->route('patient.dashboard')
+        return redirect()->route('appointment.list')
             ->with('success', 'Appointment created successfully.');
     }
 
@@ -94,6 +94,13 @@ class PatientController extends Controller
         return view('patient.appointmentList', compact('appointments'));
     }
 
+    public function delete_appointment($id)
+    {
+        $appointment = Appointment::find($id);
+            $appointment->delete();
+            return redirect()->route('appointment.list');
+    }
+
 
     public function test_report()
     {
@@ -115,6 +122,11 @@ class PatientController extends Controller
         return $pdf->download('report.pdf');
     }
 
+    public function view_appointment($id)
+    {
+        $app = Appointment::find($id);
+        return view('patient.appointmentList', compact('appointment'));
+    }
 
     /////for testing purpose
     public function addtest(Request $request)
