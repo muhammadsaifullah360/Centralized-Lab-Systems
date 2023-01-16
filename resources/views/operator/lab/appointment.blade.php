@@ -15,7 +15,7 @@
                             <div class="input-group rounded d-flex flex-md-row mt-2 mb-4">
                                 <input type="search" id="myInput" onkeyup="myFunction() " name="search"
                                        class="form-control rounded"
-                                       placeholder="search appointment..."
+                                       placeholder="Search appointment..."
                                        aria-label="Search"
                                        aria-describedby="search-addon"/>
                                 <span class="input-group-text border-0" id="search-addon"><i
@@ -39,7 +39,7 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $appointment->test }}</td>
                                             <td>{{ $appointment->phone }}</td>
-                                            <td>{{ $appointment->created_at}}</td>
+                                            <td>{{ $appointment->created_at->format('d.m.Y')}}</td>
                                             <td>
                                                 @if ($appointment->status == 'Pending')
                                                     <span class="badge badge-warning">Pending</span>

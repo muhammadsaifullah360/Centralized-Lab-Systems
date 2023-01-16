@@ -3,7 +3,7 @@
 
     <main style="margin-top: 58px">
         <div class="container pt-4">
-            <a href="{{ route('appointment.list') }}" class="btn btn-outline-danger">Show all appointments</a>
+            <a href="{{ route('appointment.list') }}" class="btn btn-danger">Show all appointments</a>
             <div class="row">
                 <form action="{{ route('appointment.store') }}" method="POST"
                       class="p-2 needs-validation" novalidate>

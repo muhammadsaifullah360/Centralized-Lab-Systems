@@ -26,7 +26,7 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $appointment->test }}</td>
                                             <td>{{ $appointment->phone }}</td>
-                                            <td>{{ $appointment->created_at}}</td>
+                                            <td>{{ $appointment->created_at->format('d.m.Y')}}</td>
                                             <td>
                                                 @if ($appointment->status == 'Pending')
                                                     <span class="badge badge-warning">Pending</span>
