@@ -1,114 +1,121 @@
-<x-admin.layout.patient_dashboard>
-    <main style="margin-top: 58px">
-        <div class="container pt-4">
-            <div class="row">
-                <div class="d-flex justify-content-end mb-5">
-                    <a style="margin-right: 6px"
-                    href="{{ route('pdf.generate') }}" type="submit" class="btn btn-primary">Download
-                    </a>
-                    <a href="{{ route('report') }}" type="button" class="btn btn-danger"
-                    >Close
-                    </a>
-                </div>
-                <form>
-                    @csrf
-                    <div class="page mb-4" size="A4">
-                        <div class="p-5">
-                            <section class="top-content bb d-flex justify-content-between">
-                                <div class="logo d-flex justify-content-center">
-                                    <img
-                                        src="{{asset('images/'.$appointment->lab->profile_image)}}"
-                                        class="rounded-circle"
-                                        alt=""
-                                        style="width: 45px; height: 45px"
-                                    />
-                                    <h2 class="fs-bold" style="color: #e92428">{{ $appointment->lab->name }}</h2>
-                                </div>
-                                <div class="top-left">
-                                    <div class="graphic-path">
-                                        <p>Report</p>
-                                    </div>
-                                    <div class="position-relative">
-                                        <p>Report No. <span>7368347</span></p>
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="store-user mt-3">
-                                <div class="col-10">
-                                    <div class="row bb pb-3">
-                                        <div class="col-7">
-                                            <p style="text-decoration: underline">Patient,</p>
-                                            <h2>{{ $appointment->user->name }}</h2>
-                                            <p class="address"> {{ $appointment->address }}<br>
-                                                Abington MA 2351,
-                                            <div class="txn mt-2">Contact: {{ $appointment->phone}}</div>
-                                        </div>
+<!DOCTYPE html>
+<html lang="en">
 
-                                    </div>
-                                    <div class="row extra-info pt-3 ">
-                                        <div class="col-7">
-                                            <p>Payment Method: <span>COD</span></p>
-                                        </div>
-                                        <div class="col-5">
-                                            <p>Date: <span>{{ date('d-m-Y') }}</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="csrf_token" content="{{ csrf_token() }}">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <title>{{ $title ?? 'Dashboard' }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+    <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+</head>
 
-                            <section class="product-area mt-4">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <td>Test Name</td>
-                                        <td>Resulted Value</td>
-                                        <td>Normal value</td>
-                                        <td>Price</td>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="media">
-                                                <div class="media-body">
-                                                    <p class="mt-0 title">{{ $appointment->test }}</p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>{{ $appointment->report->resulted_value }}</td>
-                                        <td>{{ $appointment->report->normal_value }}</td>
-                                        <td>200$</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <footer>
-                                <hr>
-                                <div class="d-flex justify-content-center">
-                                    <p class="m-0 text-center">
-                                        This report is not valid for court.
-                                    </p>
-                                </div>
-                                <div class="social pt-3">
-                                                            <span class="pr-2">
-                                                                <i class="fas fa-mobile-alt"></i>
-                                                                <span>0123456789 </span>
-                                                            </span>
-                                    <span class="pr-2">
-                                                                <i class="fas fa-envelope"></i>
-                                                                <span>{{ $appointment->lab->user->email }}</span>
-                                                            </span>
-                                    <span class="pr-2">
-                                                                <i class="fab fa-facebook-f"></i>
-                                                                <span>/sabur.7264</span>
-                                                            </span>
+<body>
+<!--Main Navigation-->
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-4">
 
-                                </div>
-                            </footer>
-                        </div>
-                    </div >
-                </form>
+                <a href="{{ route('patient.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple"
+                   aria-current="true">
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+                </a>
+
+                <a href="{{ route('appointment.dashboard') }}"
+                   class="list-group-item list-group-item-action py-2 ripple"><i
+                        class="fas fa-users fa-fw me-3"></i><span>Appointment</span></a>
+
+                <a href="{{ route('report') }}" class="list-group-item list-group-item-action py-2 ripple ">
+                    <i class="fa-solid fa-square-poll-vertical me-3"></i><span>Test Results</span>
+                </a>
             </div>
         </div>
-    </main>
-</x-admin.layout.patient_dashboard>
+    </nav>
+
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                    aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <a class="navbar-brand" href="#">
+                <div class="">
+                    <h5 style="color: #146EBE"><i class="fa-solid fa-user"></i> Patient Panel</h5>
+                </div>
+            </a>
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <ul class="navbar-nav navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ __('Login') }}</a>
+                            </li>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ __('Register') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button"
+                               data-mdb-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a href="{{ route('change') }}" class="dropdown-item">
+                                    Change Password
+                                </a>
+                                <a href="{{route('home')}}" class="dropdown-item">
+                                    Home
+                                </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </ul>
+            </ul>
+        </div>
+
+    </nav>
+</header>
+
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <div class="row">
+            <div class="d-flex justify-content-end mb-5">
+                <a style="margin-right: 6px"
+                   href="{{ route('pdf.generate', $appointment->id) }}" type="submit" class="btn btn-primary">Download
+                </a>
+                <a href="{{ route('report') }}" type="button" class="btn btn-danger"
+                >Close
+                </a>
+            </div>
+            @include('patient._report')
+        </div>
+    </div>
+</main>
+<script src="{{ asset('js/mdb.min.js') }}"></script>
+</body>
+</html>

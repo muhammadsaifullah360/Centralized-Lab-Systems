@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Stripe;
-use Session;
 use Illuminate\Http\Request;
+use Stripe\Charge;
 
 class PaymentController extends Controller
 {
@@ -19,16 +20,16 @@ class PaymentController extends Controller
 
         ));
         try {
-            \Stripe\Charge::create ( array (
+            Charge::create ( array (
                 "amount" => 50 * 100,
-                "currency" => "usd",
+                "currency" => "pkr",
                 "customer" =>  $customer["id"],
                 "description" => "Test payment."
             ) );
             Session::flash ( 'success-message', 'Payment done successfully !' );
             return view ( 'patient.payment.checkout' );
-        } catch ( \Stripe\Error\Card $e ) {
-            Session::flash ( 'fail-message', $e->get_message() );
+        } catch ( \Exception $e ) {
+            Session::flash ( 'fail-message', $e->getMessage() );
             return view ( 'patient.payment.checkout' );
         }
     }

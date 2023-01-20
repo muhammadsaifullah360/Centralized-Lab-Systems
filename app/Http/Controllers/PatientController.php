@@ -45,6 +45,7 @@ class PatientController extends Controller
             'phone' => 'required',
             'user_id' => 'required',
             'lab_id' => 'required',
+            'payment_type'=>'required'
         ]);
 
         Appointment::create($request->all());
@@ -118,14 +119,14 @@ class PatientController extends Controller
     public function generatePDF($id)
     {
         $appointment = Appointment::find($id);
-        $pdf = PDF::loadView('patient.report', compact('appointment'));
+        $pdf = PDF::loadView('patient._report', compact('appointment'));
         return $pdf->download('report.pdf');
     }
 
     public function view_appointment($id)
     {
         $app = Appointment::find($id);
-        return view('patient.appointmentList', compact('appointment'));
+        return view('patient.appointmentList', compact('app'));
     }
 
     /////for testing purpose
@@ -138,4 +139,6 @@ class PatientController extends Controller
         Fortest::create($request->all());
         return back();
     }
+
+
 }

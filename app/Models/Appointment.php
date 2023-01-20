@@ -18,6 +18,7 @@ class Appointment extends Model
         'remark',
         'user_id',
         'lab_id',
+        'payment_type'
     ];
 
     public function user()
@@ -29,6 +30,7 @@ class Appointment extends Model
     {
         return $this->hasOne(Report::class);
     }
+
     public function lab()
     {
         return $this->belongsTo(Lab::class);

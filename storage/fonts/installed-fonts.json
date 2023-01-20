@@ -1,0 +1,25 @@
+{
+    "font awesome 5 brands": {
+        "normal": "font_awesome_5_brands_normal_92c45b19798a109fcc8b8f9e249272d8"
+    },
+    "font awesome 5 free": {
+        "normal": "font_awesome_5_free_normal_30b57e7665436a6587cd5386a637d3de",
+        "900": "C:\\laragon\\www\\FYP\\fyp_odls\\storage\\fonts\/font_awesome_5_free_900_72233ab0c0c82334bfa8594e8b8daca5"
+    },
+    "font awesome 6 brands": {
+        "normal": "font_awesome_6_brands_normal_92c45b19798a109fcc8b8f9e249272d8"
+    },
+    "font awesome 6 free": {
+        "normal": "C:\\laragon\\www\\FYP\\fyp_odls\\storage\\fonts\/font_awesome_6_free_normal_30b57e7665436a6587cd5386a637d3de",
+        "900": "font_awesome_6_free_900_72233ab0c0c82334bfa8594e8b8daca5"
+    },
+    "fontawesome": {
+        "normal": "fontawesome_normal_43761f5746d8c4fa117cda43d0ce99da"
+    },
+    "roboto": {
+        "300": "C:\\laragon\\www\\FYP\\fyp_odls\\storage\\fonts\/roboto_300_32acfcb296f555e063ebba2be7db9e2f",
+        "normal": "C:\\laragon\\www\\FYP\\fyp_odls\\storage\\fonts\/roboto_normal_7bc701b343c10631f60048716b96e4f7",
+        "500": "C:\\laragon\\www\\FYP\\fyp_odls\\storage\\fonts\/roboto_500_5774d6fb05eba3d096525f821dbe4137",
+        "bold": "roboto_bold_8db5cb5d0586c1e891426d13097b1d04"
+    }
+}

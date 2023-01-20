@@ -65,8 +65,10 @@
                                                 @elseif($appointment->status == 'Done')
                                                     <a type="button"><i class="fas fa-file-download fs-4"></i></a>
                                                 @else
-                                                    <a type="button" data-mdb-toggle="modal"
-                                                       data-mdb-target="#exampleModal" style="color: #0040ff"><i
+                                                    <a href="{{ route('view.appointment',$appointment->id) }}"
+                                                       type="button" data-mdb-toggle="modal"
+                                                       data-mdb-target="#exampleModal{{$appointment->id}}"
+                                                       style="color: #0040ff"><i
                                                             class="fas fa-eye fs-4"></i></a>
                                                 @endif
                                             </td>
@@ -101,7 +103,7 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-outline mb-4">
-                                                            <input type="text"  class="form-control"
+                                                            <input type="text" class="form-control"
                                                                    id="name" value="{{ $appointment->test }}" readonly/>
                                                             <label for="name" class="form-label">Test Name</label>
                                                         </div>

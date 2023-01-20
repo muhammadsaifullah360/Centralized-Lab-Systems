@@ -3,7 +3,7 @@
 
     <main style="margin-top: 58px">
         <div class="container pt-4">
-            <a href="{{ route('appointment.list') }}" class="btn btn-danger">Show all appointments</a>
+            <a href="{{ route('appointment.list') }}" class="btn btn-danger fw-bold">Show all appointments</a>
             <div class="row">
                 <form action="{{ route('appointment.store') }}" method="POST"
                       class="p-2 needs-validation" novalidate>
@@ -36,18 +36,38 @@
                                             <input name="lab_id" value="{{ $lab->id ?? ''}}" hidden></input>
                                             <label class="form-label" for="form1Example1">Contact Number</label>
                                         </div>
-
                                         <div class="form-outline mb-4">
                                                 <textarea class="form-control" id="textAreaExample"
-                                                          rows="3" name="address">{{ $user->address ?? '' }}</textarea>
+                                                          rows="3" name="address">{{ $user->address ?? '' }}
+                                                </textarea>
                                             <label class="form-label"
                                                    for="address">Address</label>
                                         </div>
+                                        <label class="form-label mb-4">Payment Type:</label>
+                                        <div class="btn-group ">
+                                            <input type="radio"
+                                                   value="COD"
+                                                   class="btn-check"
+                                                   name="payment_type"
+                                                   id="option1"
+                                                   autocomplete="off"
+                                                   checked/>
+                                            <label class="btn btn-secondary" for="option1">COD</label>
+
+                                            <input type="radio"
+                                                   value="Card"
+                                                   class="btn-check"
+                                                   name="payment_type"
+                                                   id="option2"
+                                                   autocomplete="off"/ >
+                                            <label class="btn btn-secondary" for="option2">Card </label>
+                                        </div>
+
                                         <div>
-                                            <a href="{{route('home')}}" class="btn btn-secondary">
+                                            <a href="{{route('home')}}" class="btn btn-danger">
                                                 Close
                                             </a>
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button  type="submit"  class="btn btn-primary">Book</button>
                                         </div>
                                     </div>
                                 </div>

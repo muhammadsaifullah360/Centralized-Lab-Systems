@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('address');
             $table->string('phone');
+            $table->string('payment_type');
             $table->string('remark')->nullable();
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
