@@ -26,7 +26,7 @@
                                             <td>{{ $appointment->created_at}}</td>
                                             <td>
                                                 @if($appointment->status == 'Done')
-                                                    <a type="button"><i class="fas fa-file-download fs-4"></i></a>
+                                                    <a  href="{{ route('pdf.generate', $appointment->id) }}" ><i class="fas fa-file-download fs-4"></i></a>
                                                     <a href="{{ route('edit.report',$appointment->id)}}"
                                                        type="button" class="ms-3"> <i class="fas fa-eye fs-4"></i></a>
                                                 @endif

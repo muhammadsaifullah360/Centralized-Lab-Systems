@@ -1,113 +1,87 @@
-<div size="A4">
-
-    <div class="invoice-container" ref="document" id="html">
-        <table style="width:100%; height:auto;  text-align:center; " BORDER=0 CELLSPACING=0>
+<div  size="A4" >
+    <div class="invoice-container"   id="html">
+        <table style="width:100%; height:auto;  text-align:center; ">
             <thead style="background:#dc4c64; padding:8px;">
-            <tr style="font-size: 20px;">
-                <td colspan="4" style="padding:20px 20px;text-align: left;">
-                    <h2>{{ $appointment->lab->name }}</h2></td>
-                <td colspan="4" style="padding:20px 20px;text-align: right;font-weight: bold">REPORT</td>
+            <tr style="font-size: 20px; color: white">
+                <td style="padding:20px 20px;text-align: left;">
+
+                    <h2>  {{ $appointment->lab->name }}</td>
+                <td  style="padding:20px 20px;text-align: right;">Report-Id 7845787</td>
             </tr>
             </thead>
-            <tbody style="background:#ffff;padding:20px;">
+            <tbody style=" padding:20px;margin-bottom: 10px;">
             <tr>
                 <td colspan="4"
                     style="padding:20px 0px 0px 20px;text-align:left;font-size: 16px; font-weight: bold;color:#000;">
-                    <p style="text-decoration: underline">Patient,</p>
+                    <p style="text-decoration: underline;color: #3b71ca">Patient,</p>
                     <h2>{{ $appointment->user->name }}</h2>
-                    <p>{{ $appointment->address }}</p> <br>
+                    <p>{{ $appointment->address }}</p><br>
                     Abington MA 2351,
-                    <div>Contact: {{ $appointment->phone}}</div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4" style="text-align:left;padding:10px 10px 10px 20px;font-size:14px;">Your order
-                    details
+                    <p>Contact: {{ $appointment->phone}}</p>
                 </td>
             </tr>
             </tbody>
         </table>
         <table
-            style="width:100%; height:auto; background-color:#fff;text-align:center; padding:10px; background:#fafafa">
+            style="width:100%; height:auto; background-color:#fff;text-align:center; padding:10px; background:#3b71ca">
             <tbody>
-            <tr style="color:#6c757d; font-size: 20px;">
-                <td style="border-right:1.5px dashed  #DCDCDC; width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">
-                    Order Date
+            <tr style="color:white; font-size: 20px;">
+                <td style=" width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;">
+                    Tests
                 </td>
-                <td style="border-right: 1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">
-                    Order No.
+                <td style="width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;">
+                    Normal Value
                 </td>
-                <td style="border-right:1.5px dashed  #DCDCDC ;width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">
-                    Payment
+                <td style="width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;">
+                    Resulted Value
                 </td>
-                <td style="width:25%;font-size:12px;font-weight:700;padding: 0px 0px 10px 0px;">Shipping
-                    Address
+                <td style="width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;">
+                    Price
                 </td>
-            </tr>
-            <tr style="background-color:#fff; font-size:12px; color:#262626;">
-                <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">
-                    11.07.2021
-                </td>
-                <td style="border-right:1.5px dashed  #DCDCDC ;width:25% ; font-weight:bold;background: #fafafa;">
-                    000000001
-                </td>
-                <td style="border-right:1.5px dashed  #DCDCDC ;width:25%; font-weight:bold;background: #fafafa;">
-                    CASH
-                </td>
-                <td style="width:25%; font-weight:bold;background: #fafafa;">Kosovo, Prishtina</td>
             </tr>
             </tbody>
         </table>
         <table
             style="width:100%; height:auto; background-color:#fff; margin-top:0px;  padding:20px; font-size:12px; border: 1px solid #ebebeb; border-top:0px;">
-            <thead>
-            <tr style=" color: #ffffff;font-weight: bold; padding: 5px;">
-                <td colspan="2" style="text-align: left;">PRODUCT INFORMATION</td>
-                <td style="text-align: center;">SIZE</td>
-                <td style="padding: 10px;text-align:center;">QUANTITY</td>
-                <td style="text-align: right;padding: 10px;">PRICE</td>
-            </tr>
-            </thead>
             <tbody>
             <tr>
-                <td style="width:20%;margin-left:10px;text-align: center;">title</td>
-                <td style="width:20%;padding: 10px; text-align:center;"> S</td>
-                <td style="width:20%;padding: 10px;text-align: center;">2</td>
-                <td style="width:30%; ;font-weight: bold;font-size: 14px;">
+                <td style=" width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center">{{ $appointment->test }}</td>
+                <td style=" width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center"> {{ $appointment->report->normal_value }}</td>
+                <td style=" width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center">{{ $appointment->report->resulted_value }}</td>
+                <td style=" width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center">
                     <table style="width:100%;">
                         <tr>
-                            <td style="text-align:end;font-size:13px;">20 &euro;</td>
+                            <td style=" width:25%;font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center">{{ $appointment->price}}
+                                pkr
+                            </td>
                         </tr>
                     </table>
                 </td>
             </tr>
             </tbody>
         </table>
-        <table
-            style="width:100%; height:auto; background-color:#fff;padding:20px; font-size:12px; border: 1px solid #ebebeb; border-top:0">
+        <table style="width:100%; height:auto; background-color:#fff;padding:20px; font-size:12px;">
             <tbody>
-            <tr style="padding:20px;color:#000;font-size:15px">
-                <td style="font-weight: bold;padding:5px 0px">Total</td>
-                <td style="text-align:right;padding:5px 0px;font-weight: bold;font-size:16px;">20 &euro;</td>
-            </tr>
+            <td style=" font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center">
+                <table style="width:100%;">
+                    <tr>
+                        <td style=" width:25%;font-size:17px;font-weight:700;padding-top: 13px;text-align: center">Total {{ $appointment->price  }}
+                            pkr
+                        </td>
+                    </tr>
+                </table>
+            </td>
 
             <tr>
                 <td colspan="2" style="font-weight:bold;"><span
                         style="color:#c61932;font-weight: bold;">THANK YOU</span>
-                    for shipping with us!
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"
-                    style="font-weight:bold;text-align:left;padding:5px 0px 0px 00px;font-size:14px;">
-                    THRED<span>+</span> team
                 </td>
             </tr>
             </tbody>
-            <tfoot style="padding-top:20px;font-weight: bold;">
+            <tfoot style="padding-top:20px;font-weight: bold;margin-bottom: 10px">
             <tr>
-                <td style="padding-top:20px;">Need help? Contact us <span
-                        style="color:#c61932"> info@thred-plus.shop </span>
+                <td style="padding-top:20px; font-size: 15px">Need help? Contact us <span
+                        style="color:#c61932"><i class="fas fa-envelope"></i> {{ $appointment->lab->user->email }}/ <i class="fas fa-mobile-alt"> </i> {{ $appointment->lab->contact }}</span>
                 </td>
             </tr>
             </tfoot>

@@ -3,8 +3,9 @@
     <main style="margin-top: 58px">
         <div class="container pt-4">
             <div class="row">
+
                 <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #c5d5ef">
                         <div class="card-body">
                             <div class="d-flex justify-content-between p-md-1">
                                 <div class="d-flex flex-row">
@@ -23,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #ff8fa2">
                         <div class="card-body">
                             <div class="d-flex justify-content-between p-md-1">
                                 <div class="d-flex flex-row">
@@ -44,7 +45,7 @@
             </div>
             <div class="row">
                 <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #72d499">
                         <div class="card-body">
                             <div class="d-flex justify-content-between p-md-1">
                                 <div class="d-flex flex-row">
@@ -63,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
+                    <div class="card" style="background-color: #f2c874">
                         <div class="card-body">
                             <div class="d-flex justify-content-between p-md-1">
                                 <div class="d-flex flex-row">
@@ -81,8 +82,8 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
-
 </x-admin.layout.patient_dashboard>

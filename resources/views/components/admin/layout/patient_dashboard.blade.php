@@ -11,13 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="{{asset('css/mdb.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">
+
 </head>
 
 <body>
@@ -28,7 +25,8 @@
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
 
-                <a href="{{ route('patient.dashboard') }}" class="list-group-item list-group-item-action py-2 ripple"
+                <a style="background-color: #1266f1; color: #ffffff;" href="{{ route('patient.dashboard') }}"
+                   class="list-group-item list-group-item-action py-2 ripple rounded-2"
                    aria-current="true">
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
                 </a>
@@ -109,5 +107,7 @@
 {{ $slot }}
 <script src="{{ asset('js/mdb.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+
+
 </body>
 </html>

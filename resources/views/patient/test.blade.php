@@ -254,7 +254,7 @@
                     </td>
                     <td>{{ $appointment->report->resulted_value }}</td>
                     <td>{{ $appointment->report->normal_value }}</td>
-                    <td>200$</td>
+                    <td>{{ $appointment->price  }} pkr</td>
                 </tr>
                 </tbody>
             </table>
