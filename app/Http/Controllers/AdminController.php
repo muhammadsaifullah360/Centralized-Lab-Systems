@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Lab;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -18,7 +20,10 @@ class AdminController extends Controller
     public function index()
     {
         $totalLabs = Lab::count();
-        return view('admin.dashboard', compact('totalLabs'));
+        $users = User::where('role', 'user')->count();
+        $totalSales = Appointment::sum('price');
+        $percent = (20 / 100) * $totalSales;
+        return view('admin.dashboard', compact('totalLabs', 'users', 'totalSales', 'percent'));
     }
 
     public function users()
@@ -123,10 +128,5 @@ class AdminController extends Controller
         return redirect()->route('admin.lab.user.index')->with('message', 'User has been updated successfully');
     }
 
-    public function registeredUser()
-    {
-        $users = User::where('role', 'user')->get();
-        return view('admin.registeredUsers', compact('users'));
-    }
 
 }

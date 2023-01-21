@@ -47,14 +47,14 @@
                                                     <a href="{{ route('view.appointment',$appointment->id) }}"
                                                        type="button" data-mdb-toggle="modal"
                                                        data-mdb-target="#exampleModal{{$appointment->id}}"
-                                                       style="color: #0040ff"><i
+                                                       style="color: #3b71ca"><i
                                                             class="fas fa-eye fs-4"></i></a>
                                                     <a class="btn-delete"
                                                        href="{{ route('appointment.delete',$appointment->id)}}"
-                                                       style="color: #e60000"><i
+                                                       style="color: #dc4c64"><i
                                                             class="fas fa-minus-circle fs-4"></i></a>
                                                 @elseif($appointment->status == 'Approve')
-                                                    <a type="button" style="color: #0040ff"><i
+                                                    <a type="button" style="color: #3b71ca"><i
                                                             class="fas fa-eye fs-4"></i></a>
                                                 @elseif($appointment->status == 'Sample Collected')
                                                     <a type="button" style="color: #0040ff"><i
@@ -63,7 +63,8 @@
                                                     <a type="button" style="color: #0040ff"><i
                                                             class="fas fa-eye fs-4"></i></a>
                                                 @elseif($appointment->status == 'Done')
-                                                    <a type="button"><i class="fas fa-file-download fs-4"></i></a>
+                                                    <a href="{{ route('pdf.generate', $appointment->id) }}"
+                                                       type="button"><i class="fas fa-file-download fs-4"></i></a>
                                                 @else
                                                     <a href="{{ route('view.appointment',$appointment->id) }}"
                                                        type="button" data-mdb-toggle="modal"

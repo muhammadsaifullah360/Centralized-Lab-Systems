@@ -34,7 +34,6 @@ class PatientController extends Controller
 
     }
 
-    //get lab id while book appointment
 
     public function store(Request $request)
     {
@@ -45,7 +44,7 @@ class PatientController extends Controller
             'phone' => 'required',
             'user_id' => 'required',
             'lab_id' => 'required',
-            'payment_type'=>'required'
+            'payment_type' => 'required'
         ]);
 
         Appointment::create($request->all());
@@ -98,8 +97,8 @@ class PatientController extends Controller
     public function delete_appointment($id)
     {
         $appointment = Appointment::find($id);
-            $appointment->delete();
-            return redirect()->route('appointment.list');
+        $appointment->delete();
+        return redirect()->route('appointment.list');
     }
 
 
