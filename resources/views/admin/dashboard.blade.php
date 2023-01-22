@@ -54,7 +54,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div class="align-self-center">
-                                        <i class="fas fa-person-booth text-danger fa-3x"></i>
+                                        <i class="fas fa-user-gear text-danger fa-3x"></i>
                                     </div>
                                     <div class="text-end">
                                         <h3>08</h3>

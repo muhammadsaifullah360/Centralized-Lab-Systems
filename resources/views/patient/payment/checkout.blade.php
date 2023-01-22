@@ -1,5 +1,5 @@
 <x-admin.layout.patient_dashboard>
-    <main style="margin-top: 58px">
+    <main style="margin-top: 58px" id="div1">
         <div class="container pt-4">
             <div class="row justify-content-center">
                 <div class="col-4">
@@ -45,7 +45,7 @@
                                 <button class='form-control btn btn-primary submit-button'
                                         type='submit' style="margin-top: 10px;">Confirm
                                 </button>
-                                <a href="#" class='form-control btn btn-outline-danger submit-button'
+                                <a href="{{  route('appointment.dashboard') }}" class='form-control btn btn-outline-danger submit-button'
                                    type='button' style="margin-top: 10px;">Cancel
                                 </a>
                             </div>
