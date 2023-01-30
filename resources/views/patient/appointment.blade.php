@@ -13,7 +13,7 @@
                             <div class="card-header">
                                 <div class="row justify-content-center">
                                     <div class="col-9">
-                                        <div class="justify-content-center mb-4"><h3 class="note note-success">Add
+                                        <div class="justify-content-center mb-4"><h3 class="note note-success">Book
                                                 Appoinment</h3></div>
                                         <div class="form-outline mb-4">
                                             <input type="text" class="form-control" name="test"
@@ -87,7 +87,6 @@
                                                                 <label class='control-label'></label>
                                                                 <label>
                                                                     <input
-
                                                                         maxlength="16"
                                                                         autocomplete='off'
                                                                         class='form-control card-number' size='20'
@@ -136,8 +135,8 @@
                                             </div>
                                     </div>
     <div>
-        <a href="{{route('home')}}" class="btn btn-danger">
-            Close
+        <a href="{{route('home')}}" class="btn btn-danger fs-bold">
+            Discard
         </a>
         <button type="submit" class="btn btn-primary">Book</button>
     </div>

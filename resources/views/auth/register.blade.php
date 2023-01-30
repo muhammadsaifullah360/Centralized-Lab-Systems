@@ -29,7 +29,7 @@
                             @enderror
                             <label class="form-label" for="name">Name</label>
                             <p class="invalid-feedback">
-                                Please enter the valid name!
+                                enter the valid name!
                             </p>
                         </div>
 
@@ -39,10 +39,10 @@
                                    name="phone" value="{{ old('phone') }}" required/>
                             <label class="form-label" for="form3Example3">Phone</label>
                             @error('phone')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
                             @enderror
+                            <p class="invalid-feedback">
+                                enter the valid phone number!
+                            </p>
                         </div>
 
                         <div class="form-outline mb-4 ">
@@ -51,10 +51,10 @@
                                    name="email" value="{{ old('email') }}" required autocomplete="email"/>
                             <label class="form-label" for="form3Example3">Email address</label>
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
                             @enderror
+                            <p class="invalid-feedback">
+                                enter the valid email!
+                            </p>
                         </div>
 
 

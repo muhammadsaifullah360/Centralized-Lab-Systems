@@ -124,6 +124,7 @@
                             <th>Test Name</th>
                             <th>Price</th>
                             <th></th>
+                            <th>Rating</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -153,6 +154,9 @@
                                            class="btn btn-link btn-sm btn-rounded">
                                             BOOK
                                         </a>
+                                    </td>
+                                    <td>
+                                        {{ $result->lab->stars_rated }}
                                     </td>
                                 </tr>
                         </tbody>

@@ -4,6 +4,7 @@
     </x-slot>
     <main style="margin-top: 58px">
         <div class="container pt-4">
+            <h3 class="note note-primary"> Booked Appointments</h3>
             <div class="row">
                 <div class="col-xl-12 col-md-12 mb-4">
                     <div class="card">
