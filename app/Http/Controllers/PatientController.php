@@ -23,10 +23,10 @@ class PatientController extends Controller
     }
 
 
-    public function book($id = 0)
+    public function book($id)
     {
         $user = auth()->user();
-        $lab = Lab::find($id);
+        $lab = Lab::find(request()->lab_id);
         if ($test = Test::find($id)) {
             return view('patient.appointment', compact('test', 'user', 'lab'));
         }
@@ -46,9 +46,7 @@ class PatientController extends Controller
             'lab_id' => 'required',
             'payment_type' => 'required'
         ]);
-
         Appointment::create($request->all());
-
         return redirect()->route('appointment.list')
             ->with('success', 'Appointment created successfully.');
     }

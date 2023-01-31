@@ -22,65 +22,68 @@
                     <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate>
                         @csrf
                         <div class="form-outline mb-4">
-                            <input name="name" value="{{ old('name') }}" type="text" id="name"
-                                   class="form-control @error('name') is-invalid @enderror"
+                            <input name="name"
+                                   value="{{ old('name') }}"
+                                   type="text"
+                                   id="name"
+                                   class="form-control"
                                    required/>
-                            @error('name')
-                            @enderror
                             <label class="form-label" for="name">Name</label>
-                            <p class="invalid-feedback">
-                                enter the valid name!
-                            </p>
+                            <div class="invalid-feedback">
+                                Please enter your name.
+                            </div>
                         </div>
 
                         <div class="form-outline mb-4 ">
                             <input type="text" id="phone"
-                                   class="form-control @error('phone') is-invalid @enderror"
-                                   name="phone" value="{{ old('phone') }}" required/>
-                            <label class="form-label" for="form3Example3">Phone</label>
-                            @error('phone')
-                            @enderror
-                            <p class="invalid-feedback">
-                                enter the valid phone number!
-                            </p>
+                                   class="form-control"
+                                   name="phone"
+                                   value="{{ old('phone') }}"
+                                   required/>
+                            <label class="form-label" for="phone">Phone</label>
+                            <div class="invalid-feedback">
+                                Please enter your phone number.
+                            </div>
                         </div>
 
                         <div class="form-outline mb-4 ">
                             <input type="email" id="email"
-                                   class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}" required autocomplete="email"/>
-                            <label class="form-label" for="form3Example3">Email address</label>
-                            @error('email')
-                            @enderror
-                            <p class="invalid-feedback">
-                                enter the valid email!
-                            </p>
+                                   class="form-control"
+                                   name="email"
+                                   value="{{ old('email') }}"
+                                   required
+                                   autocomplete="email"/>
+                            <label class="form-label" for="email">Email address</label>
+                            <div class="invalid-feedback">
+                                Please enter your email address.
+                            </div>
                         </div>
 
-
                         <div class="form-outline mb-4">
-                            <input type="password" id="form3Example4" class="form-control"
-                                   @error('password') is-invalid @enderror name="password" required
+                            <input type="password" id="password" class="form-control"
+                                   name="password" required
+                                   pattern="^.{8,}$"
                                    autocomplete="current-password"/>
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                            <label class="form-label" for="form3Example4">Password</label>
+                            <label class="form-label" for="password">Password</label>
+                            <div class="invalid-feedback">
+                                Password must be at least 8 characters long.
+                            </div>
                         </div>
-                        <div class="form-outline mb-4">
-                            <input type="password" id="password_confirm" class="form-control"
-                                   @error('password') is-invalid @enderror name="password_confirmation" required
+                        <div class="form-outline">
+                            <input type="password" id="password_confirmation" class="form-control"
+                                   name="password_confirmation"
+                                   pattern="^.{8,}$"
+                                   required
                                    autocomplete="current-password"/>
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
-                            <label class="form-label" for="form3Example4">Confirm Password</label>
+                            <label class="form-label" for="password_confirmation">Confirm Password</label>
+                            <div class="invalid-feedback">
+                                Confirm Password must be at least 8 characters long.
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                        @error('password')
+                        <span class="text-danger small error-msg">{{ $message }}</span>
+                        @enderror
+                        <button type="submit" class="btn btn-primary btn-block mt-5 mb-4">
                             Signup
                         </button>
                         <a type="button" href="{{route('home')}}" class="btn btn-outline-danger btn-block mb-2">
@@ -94,7 +97,9 @@
     </div>
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="{{ asset('js/mdb.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script type="text/javascript">
     (() => {
         'use strict';

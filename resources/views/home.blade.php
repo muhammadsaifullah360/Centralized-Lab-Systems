@@ -123,8 +123,8 @@
                             <th>Lab</th>
                             <th>Test Name</th>
                             <th>Price</th>
-                            <th></th>
                             <th>Rating</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -150,14 +150,16 @@
 
                                     <td>{{ $result->price }} rs</td>
                                     <td>
-                                        <a href="{{ route('appointment.dashboard', $result->id) }}" type="button"
+                                        {{ $result->lab->ratings->avg('rating') }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('appointment.dashboard', [$result->id, 'lab_id' => $result->lab->id]) }}"
+                                           type="button"
                                            class="btn btn-link btn-sm btn-rounded">
                                             BOOK
                                         </a>
                                     </td>
-                                    <td>
-                                        {{ $result->lab->stars_rated }}
-                                    </td>
+
                                 </tr>
                         </tbody>
                         @endforeach

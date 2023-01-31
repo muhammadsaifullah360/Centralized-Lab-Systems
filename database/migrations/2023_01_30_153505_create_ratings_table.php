@@ -15,13 +15,10 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->string('stars_rated');
-            $table->timestamps();
-
+            $table->integer('rating');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('appointment_id')->constrained()->onDelete('cascade');
             $table->foreignId('lab_id')->constrained()->onDelete('cascade');
-
+            $table->timestamps();
         });
     }
 

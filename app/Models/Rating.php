@@ -10,9 +10,8 @@ class Rating extends Model
 
     protected $fillable= [
         'user_id',
-        'appointment_id',
         'lab_id',
-        'stars_rated'
+        'rating'
     ];
     public function lab(){
       return  $this->belongsTo(Lab::class);

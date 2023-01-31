@@ -25,9 +25,9 @@
                                     @foreach ($appointments as $key => $appointment)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $appointment->test }}</td>
-                                            <td>{{ $appointment->phone }}</td>
-                                            <td>{{ $appointment->created_at->format('d.m.Y')}}</td>
+                                            <td>{{ $appointment->test ?? '' }}</td>
+                                            <td>{{ $appointment->phone ?? '' }}</td>
+                                            <td>{{ $appointment->created_at->format('d.m.Y') ?? ''}}</td>
                                             <td>
                                                 @if ($appointment->status == 'Pending')
                                                     <span class="badge badge-warning">Pending</span>
@@ -88,7 +88,7 @@
                         <!-- Modal -->
                         <form method="POST">
                             <div class="modal fade" data-mdb-backdrop="static" data-mdb-keyboard="false"
-                                 id="exampleModal{{$appointment->id}}"
+                                 id="exampleModal{{$appointment->id ?? ''}}"
                                  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 @csrf
                                 <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -106,7 +106,7 @@
                                                     <div class="col">
                                                         <div class="form-outline mb-4">
                                                             <input type="text" class="form-control"
-                                                                   id="name" value="{{ $appointment->test }}" readonly/>
+                                                                   id="name" value="{{ $appointment->test ?? '' }}" readonly/>
                                                             <label for="name" class="form-label">Test Name</label>
                                                         </div>
                                                         <div class="form-outline mb-2">

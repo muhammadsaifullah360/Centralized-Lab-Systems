@@ -11,6 +11,9 @@ document.querySelectorAll('.btn-delete').forEach((button) => {
     })
 })
 
+// fade out animation
+$('.error-msg').delay(3000).fadeOut(350);
+
 let filterName = document.getElementById('filter-name')
 if(filterName){
     filterName.addEventListener('change', function () {
@@ -18,11 +21,3 @@ if(filterName){
     window.location.href = window.location.href.split('?')[0] + '?name=' + name
 
 })}
-
-var userName = document.querySelector('#numberField');
-
-userName.addEventListener('input', restrictNumber);
-function restrictNumber (e) {
-    var newValue = this.value.replace(new RegExp(/[^\d]/,'ig'), "");
-    this.value = newValue;
-}

@@ -7,6 +7,7 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RatingController;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ Route::redirect('/', 'home');
 Auth::routes();
 
 
-Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::get('home/{id?}', [HomeController::class, 'index'])->name('home');
 
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
@@ -85,5 +86,5 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
 });
 
 Route::any('dd', function (Request $request) {
-//    dd($lab = Lab::find($id));
+    dd(Rating::where('lab_id', 1)->avg('rating'));
 })->name('dd');

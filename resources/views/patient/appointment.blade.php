@@ -38,8 +38,7 @@
                                         </div>
                                         <div class="form-outline mb-4">
                                                 <textarea class="form-control" id="textAreaExample"
-                                                          rows="3" name="address">{{ $user->address ?? '' }}
-                                                </textarea>
+                                                          rows="3" name="address">{{ $user->address ?? '' }}</textarea>
                                             <label class="form-label"
                                                    for="address">Address</label>
                                         </div>
@@ -65,7 +64,6 @@
                                                    onclick="card();"/ >
                                             <label class="btn btn-secondary" for="myButton">Card </label>
                                         </div>
-
                                         <div class="mt-4" style=" display: none;" id="div1">
                                             <div class="row justify-content-center">
                                                 <div class="col">
@@ -133,18 +131,17 @@
           Session::get('success-message') }}</div>
                                                 @endif
                                             </div>
+                                        </div>
+                                            <div>
+                                                <a href="{{route('home')}}" class="btn btn-danger fs-bold">
+                                                    Discard
+                                                </a>
+                                                <button type="submit" class="btn btn-primary">Book</button>
+                                            </div>
                                     </div>
-    <div>
-        <a href="{{route('home')}}" class="btn btn-danger fs-bold">
-            Discard
-        </a>
-        <button type="submit" class="btn btn-primary">Book</button>
-    </div>
-    </div>
-    </div>
-    </div>
-    </form>
-    </div>
+                                </div>
+                </form>
+            </div>
     </main>
     <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-1.12.3.min.js"

@@ -1,12 +1,12 @@
-<div  size="A4" >
-    <div class="invoice-container"   id="html">
+<div size="A4">
+    <div class="invoice-container" id="html">
         <table style="width:100%; height:auto;  text-align:center; ">
             <thead style="background:#dc4c64; padding:8px;">
-            <tr style="font-size: 20px; color: white">
-                <td style="padding:20px 20px;text-align: left;">
-
-                    <h2>  {{ $appointment->lab->name }}</td>
-                <td  style="padding:20px 20px;text-align: right;">Report-Id 7845787</td>
+            <tr style="font-size: 18px; color: white">
+                <td style="padding:10px; display: flex; justify-content: space-between">
+                    <h2>{{ $appointment->lab->name }}</h2>
+                    <h4>#{{ rand(11111,99999) }}</h4>
+                </td>
             </tr>
             </thead>
             <tbody style=" padding:20px;margin-bottom: 10px;">
@@ -65,7 +65,8 @@
             <td style=" font-size:17px;font-weight:700;padding: 0px 0px 10px 0px;text-align: center">
                 <table style="width:100%;">
                     <tr>
-                        <td style=" width:25%;font-size:17px;font-weight:700;padding-top: 13px;text-align: center">Total {{ $appointment->price  }}
+                        <td style=" width:25%;font-size:17px;font-weight:700;padding-top: 13px;text-align: center">
+                            Total {{ $appointment->price  }}
                             pkr
                         </td>
                     </tr>
@@ -81,7 +82,8 @@
             <tfoot style="padding-top:20px;font-weight: bold;margin-bottom: 10px">
             <tr>
                 <td style="padding-top:20px; font-size: 15px">Need help? Contact us <span
-                        style="color:#c61932"><i class="fas fa-envelope"></i> {{ $appointment->lab->user->email }}/ <i class="fas fa-mobile-alt"> </i> {{ $appointment->lab->contact }}</span>
+                        style="color:#c61932"><i class="fas fa-envelope"></i> {{ $appointment->lab->user->email }}/ <i
+                            class="fas fa-mobile-alt"> </i> {{ $appointment->lab->contact }}</span>
                 </td>
             </tr>
             </tfoot>
