@@ -1,20 +1,21 @@
 <x-admin.layout.patient_dashboard>
     <x-slot:title>Book Appointment</x-slot:title>
-
+    <x-popup/>
     <main style="margin-top: 58px">
         <div class="container pt-4">
             <a href="{{ route('appointment.list') }}" class="btn btn-danger fw-bold">Show all appointments</a>
             <div class="row">
-                <form action="{{ route('appointment.store') }}" method="POST"
-                      class="p-2 needs-validation" novalidate>
+                <form action="{{ route('stripe.book') }}" method="POST"
+                      id="payment-form"
+                      class="needs-validation" novalidate>
                     @csrf
                     <div class="card">
                         <div class="card-body py-5">
                             <div class="card-header">
                                 <div class="row justify-content-center">
                                     <div class="col-9">
-                                        <div class="justify-content-center mb-4"><h3 class="note note-success">Book
-                                                Appoinment</h3></div>
+                                        <div class="justify-content-center mb-4"><h3 class="note note-success">
+                                                Appoinment Details</h3></div>
                                         <div class="form-outline mb-4">
                                             <input type="text" class="form-control" name="test"
                                                    value="{{ $test->name ?? '' }}"
@@ -42,176 +43,142 @@
                                             <label class="form-label"
                                                    for="address">Address</label>
                                         </div>
-                                        <label class="form-label mb-4">Payment Type:</label>
-                                        <div class="btn-group ">
-                                            <input type="radio"
-                                                   value="COD"
-                                                   class="btn-check"
-                                                   name="payment_type"
-                                                   id="option1"
-                                                   autocomplete="off"
-                                                   onclick="cod();"
-                                            />
-
-                                            <label class="btn btn-secondary" for="option1">COD</label>
-
-                                            <input type="radio"
-                                                   value="Card"
-                                                   class="btn-check"
-                                                   name="payment_type"
-                                                   id="myButton"
-                                                   autocomplete="off"
-                                                   onclick="card();"/ >
-                                            <label class="btn btn-secondary" for="myButton">Card </label>
+                                        <div>
+                                            <b>Select Payment Method</b>
                                         </div>
-                                        <div class="mt-4" style=" display: none;" id="div1">
-                                            <div class="row justify-content-center">
-                                                <div class="col">
-                                                    <form accept-charset="UTF-8" action="/"
-                                                          class="require-validation"
-                                                          data-cc-on-file="false"
-                                                          data-stripe-publishable-key="pk_test_51MDpdLHx2TAsiIqQn5IekS96v18RDBrRZQCmC9Ko8qXneYbgYtizUJ4zmq0dmqd0fM0XFLQbItnK4AaPwyJb9lOd00XrVEnPPA"
-                                                          id="payment-form" method="post">
-                                                        @csrf
-                                                        <div class='form-row mb-4'>
-                                                            <div class='col-xs-12 form-group required'>
-                                                                <label class='control-label'></label> <input
-                                                                    class='form-control' size='4' type='text'
-                                                                    placeholder="Enter Card Holder Name">
-                                                            </div>
-                                                        </div>
-                                                        <div class='form-row '>
-                                                            <div class='col-xs-12 form-group card required'>
-                                                                <label class='control-label'></label>
-                                                                <label>
-                                                                    <input
-                                                                        maxlength="16"
-                                                                        autocomplete='off'
-                                                                        class='form-control card-number' size='20'
-                                                                        type='text' placeholder="Enter Card number">
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class='form-row'>
-                                                            <div class='col-xs-4 form-group cvc required'>
-                                                                <label class='control-label'></label> <input
-                                                                    maxlength="3"
-                                                                    autocomplete='off' class='form-control card-cvc'
-                                                                    placeholder='CVV' size='4' type='text'>
-                                                            </div>
-                                                            <div class='col-xs-4 form-group expiration required'>
-                                                                <label class='control-label'>Expiration</label>
-                                                                <input
-                                                                    maxlength="2"
-                                                                    class='form-control card-expiry-month'
-                                                                    placeholder='MM' size='2'
-                                                                    type='text'>
-                                                            </div>
-                                                            <div class='col-xs-4 form-group expiration required'>
-                                                                <label class='control-label'></label> <input
-                                                                    maxlength="4"
-                                                                    class='form-control card-expiry-year'
-                                                                    placeholder='YYYY'
-                                                                    size='4' type='text'>
-                                                            </div>
-                                                        </div>
-                                                        <div class='form-row'>
-                                                            <div class='mb-4 form-group'>
-                                                                <button
-                                                                    class='form-control btn btn-primary submit-button'
-                                                                    type='submit' style="margin-top: 10px;">Pay
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                                @if ((Session::has('success-message')))
-                                                    <div class="alert alert-success col-md-12">{{
-          Session::get('success-message') }}</div>
-                                                @endif
-                                            </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="payment_type"
+                                                   id="cash" value="cash" checked/>
+                                            <label class="form-check-label" for="inlineRadio1">Cash</label>
                                         </div>
-                                            <div>
-                                                <a href="{{route('home')}}" class="btn btn-danger fs-bold">
-                                                    Discard
-                                                </a>
-                                                <button type="submit" class="btn btn-primary">Book</button>
+                                        <div class="form-check form-check-inline mb-4">
+                                            <input class="form-check-input" type="radio" name="payment_type"
+                                                   id="card" value="card"/>
+                                            <label class="form-check-label" for="inlineRadio2">Card</label>
+                                        </div>
+                                        <div id="div-card">
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="card-holder-name" class="form-control">
+                                                <label for="card-holder-name" class="form-label">Card Holder
+                                                    Name</label>
                                             </div>
+                                            <div id="card-element" class="rounded-2 border py-2 px-1">
+                                                <!-- A Stripe Element will be inserted here. -->
+                                            </div>
+
+                                            <!-- Used to display form errors. -->
+                                            <div id="card-errors" class="text-muted mb-5"></div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <button type="submit"
+                                                    class="btn btn-primary btn-block bg-gradient-blue fw-bold">
+                                                Book Appointment
+                                            </button>
+                                            <a href="{{ route('home') }}"
+                                               class="btn btn-secondary btn-block fw-bold mt-4">
+                                                Cancel
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                 </form>
             </div>
     </main>
-    <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
-    <script src="https://code.jquery.com/jquery-1.12.3.min.js"
-            integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" lcrossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
-        $(function () {
-            $('form.require-validation').bind('submit', function (e) {
-                var $form = $(e.target).closest('form'),
-                    inputSelector = ['input[type=email]', 'input[type=password]',
-                        'input[type=text]', 'input[type=file]',
-                        'textarea'].join(', '),
-                    $inputs = $form.find('.required').find(inputSelector),
-                    $errorMessage = $form.find('div.error'),
-                    valid = true;
+        // Create a Stripe client.
+        var stripe = Stripe('pk_test_51MDpdLHx2TAsiIqQn5IekS96v18RDBrRZQCmC9Ko8qXneYbgYtizUJ4zmq0dmqd0fM0XFLQbItnK4AaPwyJb9lOd00XrVEnPPA');
 
-                $errorMessage.addClass('hide');
-                $('.has-error').removeClass('has-error');
-                $inputs.each(function (i, el) {
-                    var $input = $(el);
-                    if ($input.val() === '') {
-                        $input.parent().addClass('has-error');
-                        $errorMessage.removeClass('hide');
-                        e.preventDefault(); // cancel on first error
-                    }
-                });
+        // Create an instance of Elements.
+        var elements = stripe.elements();
+
+        // Custom styling can be passed to options when creating an Element.
+        // (Note that this demo uses a wider set of styles than the guide below.)
+        var style = {
+            base: {
+                color: '#32325d',
+                lineHeight: '18px',
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4'
+                }
+            },
+            invalid: {
+                color: '#fa755a',
+                iconColor: '#fa755a'
+            }
+        };
+
+        // Create an instance of the card Element.
+        var card = elements.create('card', {style: style});
+
+        // Add an instance of the card Element into the `card-element` <div>.
+        card.mount('#card-element');
+
+        // Handle real-time validation errors from the card Element.
+        card.addEventListener('change', function (event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        // Handle form submission.
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if ($('#cash').is(':checked')) {
+                form.submit();
+                return;
+            }
+            stripe.createPaymentMethod('card', card, {
+                billing_details: {
+                    name: document.getElementById('card-holder-name').value,
+                }
+            }).then(function (result) {
+                if (result.error) {
+                    // Inform the user if there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripePaymentMethodHandler(result.paymentMethod);
+                }
             });
         });
 
-        $(function () {
-            var $form = $("#payment-form");
+        // Submit the form with the paymentMethod ID.
+        function stripePaymentMethodHandler(paymentMethod) {
+            $('button[type="submit"]').prop('disabled', true);
+            $('button[type="submit"]').html('<i class="fa fa-spinner fa-spin fa-2x"> </i>');
 
-            $form.on('submit', function (e) {
-                if (!$form.data('cc-on-file')) {
-                    e.preventDefault();
-                    Stripe.setPublishableKey($form.data('stripe-publishable-key'));
-                    Stripe.createToken({
-                        number: $('.card-number').val(),
-                        cvc: $('.card-cvc').val(),
-                        exp_month: $('.card-expiry-month').val(),
-                        exp_year: $('.card-expiry-year').val()
-                    }, stripeResponseHandler);
-                }
-            });
-
-            function stripeResponseHandler(status, response) {
-                if (response.error) {
-                    $('.error')
-                        .removeClass('hide')
-                        .find('.alert')
-                        .text(response.error.message);
-                } else {
-                    // token contains id, last4, and card type
-                    var token = response['id'];
-                    // insert the token into the form so it gets submitted to the server
-                    $form.find('input[type=text]').empty();
-                    $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-                    console.log(token);
-                    $form.get(0).submit();
-                    $form.reset();
-                }
-            }
-        })
-    </script>
-    <script>
-        function card() {
-            document.getElementById('div1').style.display = 'block';
+            // Insert the token ID into the form, so it gets submitted to the server
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'payment_method');
+            hiddenInput.setAttribute('value', paymentMethod.id);
+            form.appendChild(hiddenInput);
+            form.submit();
         }
 
-        function cod() {
-            document.getElementById('div1').style.display = 'none';
-        }
+        // hide card div if cash is selected
+        $('#cash').on('click', function () {
+            $('#div-card').hide();
+        });
+
+        // show card div if card is selected
+        $('#card').on('click', function () {
+            $('#div-card').show();
+        });
+        $('#div-card').hide();
     </script>
 </x-admin.layout.patient_dashboard>

@@ -21,10 +21,12 @@ class OperatorController extends Controller
         return view('operator.dashboard', compact('totalTests','totalAppointments','pending','approved','done'));
     }
 
-    public function appointmentList()
-    {
-        return view('operator.lab.appointment');
-    }
+
+
+//    public function appointmentList()
+//    {
+//        return view('operator.lab.appointment');
+//    }
 
     public function about()
     {
@@ -81,10 +83,10 @@ class OperatorController extends Controller
         return redirect()->route('tests.dashboard', compact('tests'))->with('message', 'Test has been updated successfully');
     }
 
-    public function Show_appointmentList()
+    public function show_appointmentList()
     {
 
-        $appointments = Appointment::all();
+        $appointments = Appointment::where('lab_id', auth()->user()->lab()->get()->first()->id)->get();
         return view('operator.lab.appointment', compact('appointments'));
     }
 

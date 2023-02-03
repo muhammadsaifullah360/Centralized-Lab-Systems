@@ -103,7 +103,11 @@
                         </button>
                         <div class="form-outline mt-3">
                             <label class="form-label"><i class="fa fa-exclamation-circle"></i>
-                                <a>Help</a>
+                                <a title=
+                                       "the message
+                                  the message
+                                  the message
+                                  the message">Help</a>
                             </label>
                         </div>
                     </form>
@@ -112,7 +116,7 @@
         </div>
     </div>
 </div>
-<div class="container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
+<div class=" container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
     <div class="row g-0 d-flex justify-content-center ">
         <div class="col-10">
             <div class="row ">
@@ -150,7 +154,16 @@
 
                                     <td>{{ $result->price }} rs</td>
                                     <td>
-                                        {{ $result->lab->ratings->avg('rating') }}
+                                        <div class="rating-css">
+                                            @php $rate =  number_format($result->lab->ratings->avg('rating')) @endphp
+                                            @for( $i=1; $i<= $rate; $i++)
+                                                <i class="fa fa-star checked"></i>
+                                            @endfor
+                                            @for( $j=$rate+1; $i<=5; $i++)
+                                                <i class="fa fa-star"></i>
+                                            @endfor
+                                        </div>
+
                                     </td>
                                     <td>
                                         <a href="{{ route('appointment.dashboard', [$result->id, 'lab_id' => $result->lab->id]) }}"
@@ -176,32 +189,8 @@
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
         <div class="me-5 d-none d-lg-block">
-            <span>Get connected with us on social networks:</span>
+            <span>Get connected with us.</span>
         </div>
-        <!-- Left -->
-
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
     </section>
     <!-- Section: Social media -->
 
@@ -214,11 +203,11 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Company name
+                        <i class="fas fa-gem me-3"></i>SP19-BSE
                     </h6>
                     <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
+                        Book, track, manage and reconcile all your online diagnostic tests in one place!Book, track,
+                        manage and reconcile all your online diagnostic tests in one place!
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -242,28 +231,6 @@
                         <a href="#" class="text-reset">Laravel</a>
                     </p>
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#" class="text-reset">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#" class="text-reset">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
 
                 <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
@@ -293,6 +260,40 @@
 </footer>
 <!-- Footer -->
 </body>
+<style>
+    .rating-css div {
+        color: #ffe400;
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        padding: 20px 0;
+    }
+
+    .rating-css input {
+        display: none;
+    }
+
+    .rating-css input + label {
+        font-size: 60px;
+        text-shadow: 1px 1px 0 #8f8420;
+        cursor: pointer;
+    }
+
+    .rating-css input:checked + label ~ label {
+        color: #b4afaf;
+    }
+
+    .rating-css label:active {
+        transform: scale(0.8);
+        transition: 0.3s ease;
+    }
+
+    .checked {
+        color: #ff7200;
+    }
+</style>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

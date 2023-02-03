@@ -86,7 +86,7 @@
 
                         </div>
                         <!-- Modal -->
-                        <form method="POST">
+                        <form action="{{ route('appointment.update') }}" method="POST">
                             <div class="modal fade" data-mdb-backdrop="static" data-mdb-keyboard="false"
                                  id="exampleModal{{$appointment->id ?? ''}}"
                                  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

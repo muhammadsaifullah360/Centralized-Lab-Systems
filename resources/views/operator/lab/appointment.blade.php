@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xl-12 col-md-12 mb-4">
                     @if($message = session('message'))
-                        <div class="note note-success mb-4 animate_animated animate__bounceIn">
+                        <div class="note note-success mb-4 animate_animated animate__bounceIn ">
                             {{ $message }}
                         </div>
                     @endif
@@ -134,7 +134,7 @@
                                                                                           required>{{ $appointment->remark ?? '' }}</textarea>
                                                                             <label for="name"
                                                                                    class="form-label">Remarks</label>
-                                                                            <div class="invalid-feedback"></div>
+
                                                                         </div>
                                                                         <div class="form-outline mb-4">
                                                                             <label for="inputState"></label>

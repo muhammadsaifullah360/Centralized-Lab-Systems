@@ -18,9 +18,6 @@ class HomeController extends Controller
 
             return view('home', compact('tests', 'results'));
         }
-
         return view('/home', compact('tests'));
     }
-
-
 }

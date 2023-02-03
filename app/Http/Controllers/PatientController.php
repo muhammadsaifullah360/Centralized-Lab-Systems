@@ -23,7 +23,7 @@ class PatientController extends Controller
     }
 
 
-    public function book($id)
+    public function book($id =0)
     {
         $user = auth()->user();
         $lab = Lab::find(request()->lab_id);
@@ -88,7 +88,7 @@ class PatientController extends Controller
 
     public function appointmentList()
     {
-        $appointments = Appointment::all();
+        $appointments = Appointment::where('user_id', auth()->user()->id)->get();
         return view('patient.appointmentList', compact('appointments'));
     }
 
@@ -106,7 +106,6 @@ class PatientController extends Controller
         $appointments = Appointment::where('status', 'Done')->get();
         return view('patient.test_report', compact('appointments'));
     }
-
     public function edit_report($id)
     {
         $appointment = Appointment::find($id);
@@ -136,6 +135,10 @@ class PatientController extends Controller
         Fortest::create($request->all());
         return back();
     }
+
+    //get price of test
+
+
 
 
 }

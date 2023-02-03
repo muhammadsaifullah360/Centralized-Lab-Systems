@@ -7,12 +7,19 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RatingController;
-use App\Models\Rating;
+use App\Http\Controllers\StripeController;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/', [PaymentController::class, 'call']);
+
+
+
+
+Route::get ( '/pay', [PaymentController::class,'index'])->name('pay');
+Route::post ( '/pay', [PaymentController::class,'call'] );
+
 Route::redirect('/', 'home');
 
 Auth::routes();
@@ -45,7 +52,7 @@ Route::middleware(['auth', 'role:admin'])->controller(AdminController::class)->p
 Route::middleware(['auth', 'role:operator'])->controller(OperatorController::class)->prefix('operator')->group(function () {
     Route::get('dashboard', 'index')->name('operator.dashboard');
 
-    Route::get('lab/appointment', 'Show_appointmentList')->name('appointment');
+    Route::get('lab/appointment', 'show_appointmentList')->name('appointment');
     Route::get('edit/appointment/{id?}', 'edit_appointment')->name('edit.appointment');
     Route::post('update/appointment/{id?}', 'update_appointment')->name('update.appointment');
     Route::get('lab/tests', 'tests')->name('tests.dashboard');
@@ -63,6 +70,7 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::get('patient/dashboard', 'index')->name('patient.dashboard');
     Route::get('book/test/{id?}', 'book')->name('appointment.dashboard');
     Route::post('book/test', 'store')->name('appointment.store');
+    Route::post('book/test/{id?}', 'update')->name('appointment.update');
     Route::delete('appointment/{id}', 'delete_appointment')->name('appointment.delete');
     Route::get('all-appointments', 'appointmentList')->name('appointment.list');
     Route::get('view/appointment/{id?}', 'view_appointment')->name('view.appointment');
@@ -77,14 +85,11 @@ Route::middleware(['auth'])->controller(PatientController::class)->group(functio
     Route::get('report/{id?}', 'edit_report')->name('edit.report');
     Route::get('pdf/generate/{id?}', 'generatePDF')->name('pdf.generate');
 
-    Route::post('appointment/rating',[RatingController::class, 'rating'])->name('rating');
+    Route::post('appointment/rating', [RatingController::class, 'rating'])->name('rating');
+    Route::post('appointment/book', [StripeController::class, 'book'])->name('stripe.book');
 
-
-    ////for testing purpose
-    Route::get('patient/test', 'test')->name('test');
-    Route::post('patient/test', 'addtest')->name('store.test');
 });
 
 Route::any('dd', function (Request $request) {
-    dd(Rating::where('lab_id', 1)->avg('rating'));
+    dd(Appointment::where('lab_id', auth()->user()->lab()->get()->first()->id)->get());
 })->name('dd');
