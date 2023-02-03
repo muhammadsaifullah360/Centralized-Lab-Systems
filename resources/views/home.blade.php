@@ -102,12 +102,11 @@
                             Search
                         </button>
                         <div class="form-outline mt-3">
-                            <label class="form-label"><i class="fa fa-exclamation-circle"></i>
-                                <a title=
-                                       "the message
-                                  the message
-                                  the message
-                                  the message">Help</a>
+                            <label  class="form-label"><i class="fa fa-exclamation-circle"></i>
+                                <a class="pointer" title=
+                                       "ecg |ecg cbc |kidney |test |kft
+                                      " >
+                                    Help</a>
                             </label>
                         </div>
                     </form>
@@ -116,7 +115,7 @@
         </div>
     </div>
 </div>
-<div class=" container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
+<div  class=" container mt-5 mb-10 animate__animated animate__fadeInDown" id="sign-in">
     <div class="row g-0 d-flex justify-content-center ">
         <div class="col-10">
             <div class="row ">
@@ -293,6 +292,9 @@
     .checked {
         color: #ff7200;
     }
+    .pointer{
+        cursor: pointer;
+    }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -308,5 +310,7 @@
         document.getElementById('sign-in').style.display = "d-block";
         document.getElementById('sign-in').reset();
     }
+
+
 </script>
 </html>

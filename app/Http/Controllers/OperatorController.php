@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class OperatorController extends Controller
 {
-
-
     public function index()
     {
         $totalAppointments = Appointment::count();
@@ -18,7 +16,7 @@ class OperatorController extends Controller
         $approved = Appointment::where('status', 'approve')->count();
         $done = Appointment::where('status', 'Done')->count();
         $totalTests = Test::where('lab_id', auth()->user()->lab()->get()->first()->id)->count();
-        return view('operator.dashboard', compact('totalTests','totalAppointments','pending','approved','done'));
+        return view('operator.dashboard', compact('totalTests', 'totalAppointments', 'pending', 'approved', 'done'));
     }
 
 

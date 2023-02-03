@@ -56,7 +56,7 @@
                                     <div class="align-self-center">
                                         <i class="fa-regular fa-thumbs-up fa-3x text-primary"></i>
                                     </div>
-                                    
+
                                     <div class="text-end">
                                         <h3>{{ $done }}</h3>
                                         <p class="mb-0">Done Appointment</p>
@@ -82,7 +82,7 @@
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
                                         <div class="align-self-center">
-                                            <h2 class="h1 mb-0 me-4">$76,456.00</h2>
+                                            <h2 class="h1 mb-0 me-4">Rs 76,45</h2>
                                         </div>
                                         <div>
                                             <h4>Total Sales</h4>
@@ -102,7 +102,7 @@
                                 <div class="d-flex justify-content-between p-md-1">
                                     <div class="d-flex flex-row">
                                         <div class="align-self-center">
-                                            <h2 class="h1 mb-0 me-4">$36,00.00</h2>
+                                            <h2 class="h1 mb-0 me-4">Rs 36,00</h2>
                                         </div>
                                         <div>
                                             <h4>Total Profit %</h4>
