@@ -91,7 +91,6 @@
                         text-decoration:underline ">
                             <label for="name">Search</label>
                         </div>
-
                         <div class="form-outline mb-4">
                             <input type="text" name="search" class="form-control"
                                    id="search" required/>
