@@ -111,14 +111,14 @@
                                 @if($test->status == 'Active')
                                     <span class="badge badge-success">{{ $test->status }}</span>
                                 @else
-                                    <span class="badge badge-danger">{{ $test->status }}</span>
+                                    <span class="badge badge-success">{{ $test->status }}</span>
                                 @endif
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a class="btn-delete " style="margin-right: 20px"
                                        href="{{ route('delete.test',$test->id) }}">
-                                        <div style="color: #e60000">
+                                        <div style="color: green">
                                             <i class="fa-solid fa-trash-can fs-4"></i>
                                         </div>
                                     </a>

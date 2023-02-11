@@ -136,7 +136,7 @@
                                                                                    class="form-label">Remarks</label>
 
                                                                         </div>
-                                                                        <div class="form-outline mb-4">
+                                                                        <div class="mb-4">
                                                                             <label for="inputState"></label>
                                                                             <select id="inputState" name="status"
                                                                                     class="form-select ">

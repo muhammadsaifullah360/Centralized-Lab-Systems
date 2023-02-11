@@ -98,16 +98,20 @@
                             <label for="search" class="form-label">Search here...</label>
                             <div class="invalid-feedback"></div>
                         </div>
+                        <div>
+                        <label  class="form-label"><i class="fa fa-exclamation-circle"></i>
+                            <a class="pointer" title=
+                                "ecg |ecg cbc |kidney |test |kft
+                               " >
+                                Help</a>
+                        </label>
+                        </div>
+
                         <button type="submit" class="btn btn-secondary fw-bold shadow-3-strong " onclick="showDiv()">
                             Search
                         </button>
                         <div class="form-outline mt-3">
-                            <label  class="form-label"><i class="fa fa-exclamation-circle"></i>
-                                <a class="pointer" title=
-                                       "ecg |ecg cbc |kidney |test |kft
-                                      " >
-                                    Help</a>
-                            </label>
+
                         </div>
                     </form>
                 </div>
